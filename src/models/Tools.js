@@ -14,7 +14,7 @@ class Tools{
 
              request.onload = function() {
 
-                 if (request.status == 200) {
+                 if (request.status === 200) {
                      resolve(JSON.parse(request.response));
                  }
                  else {
@@ -27,9 +27,15 @@ class Tools{
         return promise;
      }
 
+     static getRandomNumber(elementsArray){
+         let randomNumber = parseInt(Math.random() * (elementsArray.length - 1) + 1);
+         return randomNumber;
+     }
+
 
      static getRandomCity(countries){
-         let randomNumber = parseInt(Math.random() * (countries.length - 1) + 1);
+
+         let randomNumber =  Tools.getRandomNumber(countries)
 
          let randomCity = {
              name: countries[randomNumber].capital,

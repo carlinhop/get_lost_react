@@ -1,9 +1,28 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Tools from './models/Tools';
 
 class App extends Component {
+    constructor(props){
+        super(props);
+        this.state = Tools.xmlHttp("https://restcountries.eu/rest/v1/all")
+            .then((results)=>{
+            this.setState({countries: results});
+
+        }).then(()=>{
+            this.setState({city: Tools.getRandomCity(this.state.countries)});
+            console.log(this.state.city);
+        });
+    }
+
+
+
   render() {
+
+
+
+
     return (
       <div className="App">
         <div className="App-header">
