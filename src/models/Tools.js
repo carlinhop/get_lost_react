@@ -3,7 +3,8 @@ class Tools{
      static xmlHttp(url){
 
          //This is how you have to use xmlHttp:
-         //Tools.xmlHttp("https://restcountries.eu/rest/v1/all").then((results)=>{console.log(results)},(results)=>{console.log(results)})
+         //Tools.xmlHttp("https://restcountries.eu/rest/v1/all")
+         // .then((results)=>{console.log(results)},(results)=>{console.log(results)})
 
          let promise = new Promise((resolve, reject) => {
 
@@ -40,3 +41,4 @@ class Tools{
        return randomCity;
      }
 }
+export default Tools;
