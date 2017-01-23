@@ -37,14 +37,14 @@ class Tools{
 
          let randomNumber =  Tools.getRandomNumber(countries)
 
-         let randomCity = {
+         let randomCityData = {
              name: countries[randomNumber].capital,
              coordinates: countries[randomNumber].latlng,
              language: countries[randomNumber].languages,
              country: countries[randomNumber].name,
              currency: countries[randomNumber].currencies
          }
-       return randomCity;
+       return randomCityData;
      }
 }
 export default Tools;
