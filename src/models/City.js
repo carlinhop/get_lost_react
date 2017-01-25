@@ -4,12 +4,13 @@
 
 class City{
 
-    constructor(name, coordinates, languages, country, currency){
-        this.name = name;
-        this.coordinates = coordinates;
-        this.languages = languages;
-        this.country = country;
-        this.currency = currency;
+
+    constructor(city){
+        this.name = city.name;
+        this.coordinates = city.coordinates;
+        this.languages = city.languages;
+        this.country = city.country;
+        this.currency = city.currency;
         this.places = [];
     }
 
