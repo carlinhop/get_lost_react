@@ -5,12 +5,13 @@
 class City{
 
 
-    constructor(city){
-        this.name = city.name;
-        this.coordinates = city.coordinates;
-        this.languages = city.languages;
-        this.country = city.country;
-        this.currency = city.currency;
+    constructor(cityObj){
+        //cityObj is a data object coming from an API
+        this.name = cityObj.name;
+        this.coordinates = cityObj.coordinates;
+        this.languages = cityObj.languages;
+        this.country = cityObj.country;
+        this.currency = cityObj.currency;
         this.places = [];
     }
 

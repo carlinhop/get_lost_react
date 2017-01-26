@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Tools from './models/Tools';
-
 import City from "./models/City";
 import Place from "./models/Place";
 import MapWrapper from "./models/MapWrapper";
@@ -28,7 +27,7 @@ class App extends Component {
             console.log(this.state.city);
             let mapHTML= document.getElementById("map");
             let mapWrap = new MapWrapper(mapHTML, {zoom: 4, center: {lat: this.state.city.coordinates[0],
-                    lng:this.state.city.coordinates[1]}})
+                    lng:this.state.city.coordinates[1]}});
             });
 
 
@@ -42,7 +41,6 @@ class App extends Component {
 
 
   render() {
-
 
 
 
