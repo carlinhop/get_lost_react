@@ -12,11 +12,12 @@ import MapWrapper from "./models/MapWrapper";
 class App extends Component {
 
     constructor(props){
+
         super(props);
 
         this.state = {name: "", google: null, mapWrap: null};
 
-        this.state = Tools.xmlHttp("https://restcountries.eu/rest/v1/all")
+        this.state = Tools.xmlHttp("https://restcountries.eu/rest/v1/all", "GET")
             .then((results)=>{
             this.setState({countries: results});
 
@@ -50,7 +51,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-          <div id="map"></div>
+          <div id="map" className="map"></div>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>

@@ -1,6 +1,6 @@
 class Tools{
 
-     static xmlHttp(url){
+     static xmlHttp(url, action){
 
          //This is how you have to use xmlHttp:
          //Tools.xmlHttp("https://restcountries.eu/rest/v1/all")
@@ -10,7 +10,7 @@ class Tools{
 
              let request = new XMLHttpRequest();
 
-             request.open("GET", url);
+             request.open(action, url);
 
              request.onload = function() {
 

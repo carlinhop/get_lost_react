@@ -17,7 +17,7 @@ class City{
 
     selectPlace(placeName){
         this.places.select((place)=>{
-            return place.name == placeName;
+            return place.name === placeName;
         });
     }
 
