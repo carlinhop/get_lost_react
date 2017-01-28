@@ -4,6 +4,10 @@ body {
   font-family: sans-serif;
 }
 
+.container{
+  display: flex;
+}
+
 .map {
   height:300px;
   width:400px;
