@@ -15,8 +15,8 @@ let SideBar = function(props){
     else {
         return (
             <div className="sidebar">
-                <h1>Current City</h1>
-                <p>{props.city.name}</p>
+                <img src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fnickshell1983.files.wordpress.com%2F2011%2F06%2Fphuket-thailand.jpg&f=1"/>
+                <h1>{props.city.name}</h1>
                 <p>{props.city.country}</p>
                 <p>{props.city.currency[0]}</p>
             </div>)

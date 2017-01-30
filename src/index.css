@@ -29,7 +29,7 @@ html, body {
   flex-direction: column;
   align-items: center;
   length: 100%;
-  width: 100%;
+  width: 65%;
 
 }
 .getlost-button{
@@ -44,7 +44,7 @@ html, body {
 }
 
 .sidebar{
-
     height: 100%;
+    width: 35%;
 
 }
