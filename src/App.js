@@ -5,6 +5,7 @@ import Tools from './models/Tools';
 import City from "./models/City";
 import Place from "./models/Place";
 import MapWrapper from "./models/MapWrapper";
+import SideBar from "./SideBar";
 
 
 
@@ -14,7 +15,7 @@ class App extends Component {
     constructor(props){
 
         super(props);
-        this.state = {name: "", google: null, mapWrap: null};
+        this.state = {};
 
 
 
@@ -23,7 +24,7 @@ class App extends Component {
     componentDidMount(){
 
 
-        this.state = Tools.xmlHttp("https://restcountries.eu/rest/v1/all", "GET")
+         Tools.xmlHttp("https://restcountries.eu/rest/v1/all", "GET")
             .then((results)=>{
                 this.setState({countries: results});
 
@@ -47,6 +48,7 @@ class App extends Component {
 
 
     return (
+
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -56,6 +58,7 @@ class App extends Component {
             <div id="map" className="map"></div>
 
           </div>
+          <SideBar city={this.state.city}/>
       </div>
     );
   }
