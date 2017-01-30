@@ -15,8 +15,10 @@ let SideBar = function(props){
     else {
         return (
             <div>
-                <h1>Prueba</h1>
+                <h1>Current City</h1>
                 <p>{props.city.name}</p>
+                <p>{props.city.country}</p>
+                <p>{props.city.currency[0]}</p>
             </div>)
     }
 }
