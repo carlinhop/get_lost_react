@@ -14,7 +14,7 @@ let SideBar = function(props){
 
     else {
         return (
-            <div>
+            <div className="sidebar">
                 <h1>Current City</h1>
                 <p>{props.city.name}</p>
                 <p>{props.city.country}</p>

@@ -54,11 +54,12 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-          <div className="container">
-            <div id="map" className="map"></div>
-
+          <div className="main">
+              <div className="map-container">
+                <div id="map" className="map"></div>
+              </div>
+              <SideBar city={this.state.city}/>
           </div>
-          <SideBar city={this.state.city}/>
       </div>
     );
   }
