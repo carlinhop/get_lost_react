@@ -23,6 +23,7 @@ class App extends Component {
 
     componentDidMount(){
 
+        let mapWrap;
 
          Tools.xmlHttp("https://restcountries.eu/rest/v1/all", "GET")
             .then((results)=>{
@@ -34,9 +35,12 @@ class App extends Component {
             }).then(()=>{
                 console.log(this.state.city);
                 let mapHTML= document.getElementById("map");
-                let mapWrap = new MapWrapper(mapHTML, {zoom: 4, center: {lat: this.state.city.coordinates[0],
+                mapWrap = new MapWrapper(mapHTML, {zoom: 4, center: {lat: this.state.city.coordinates[0],
                     lng:this.state.city.coordinates[1]}});
-            });
+            }).then(()=>{
+         });
+
+
 
 
     }
@@ -59,6 +63,8 @@ class App extends Component {
                 <div id="map" className="map"></div>
               </div>
               <SideBar city={this.state.city}/>
+
+
           </div>
       </div>
     );
