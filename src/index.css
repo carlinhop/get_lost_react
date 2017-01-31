@@ -30,6 +30,7 @@ html, body {
   align-items: center;
   length: 100%;
   width: 65%;
+  z-index: 1;
 
 }
 .getlost-button{
@@ -47,4 +48,10 @@ html, body {
     height: 100%;
     width: 35%;
 
+}
+
+.prueba{
+    position: fixed;
+    margin-top: 30%;
+    z-index: 2;
 }

@@ -21,6 +21,7 @@ class MapWrapper{
                 this.map = new google.maps.Map(el, options);
                 this.createControl("Another");
                 this.createControl("Take me there");
+                console.log(this.map.controls);
 
 
 
@@ -57,11 +58,11 @@ class MapWrapper{
         controlText.style.paddingRight = '5px';
         controlText.innerHTML = message;
         controlUI.appendChild(controlText);
-        controlText.className = "another";
+
+        controlUI.className = "another";
+
+
         //Pushing the new control to the map
-        controlUI.addEventListener('click', function() {
-            console.log("click");
-        });
         this.map.controls[this.google.maps.ControlPosition.TOP_CENTER].push(controlDiv);
 
 

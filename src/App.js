@@ -35,15 +35,34 @@ class App extends Component {
             }).then(()=>{
                 console.log(this.state.city);
                 let mapHTML= document.getElementById("map");
-                mapWrap = new MapWrapper(mapHTML, {zoom: 4, center: {lat: this.state.city.coordinates[0],
-                    lng:this.state.city.coordinates[1]}, disableDefaultUI: true});
-
-            }).then((something)=>{
-             console.log(something);
-         });
+                this.setState({mapWrap: new MapWrapper(mapHTML, {zoom: 4, center: {lat: this.state.city.coordinates[0],
+                    lng:this.state.city.coordinates[1]}, disableDefaultUI: true})});
 
 
+            });
 
+
+
+
+    }
+
+    componentWillUpdate(){
+
+    // this.state.mapWrap.map.setCenter({lat: this.state.city.coordinates[0],
+    // lng:this.state.city.coordinates[1]});
+
+    }
+
+    random(){
+
+
+            this.setState({city: new City(Tools.getRandomCity(this.state.countries))
+            }, ()=>{
+                console.log(this.state.city);
+
+                this.state.mapWrap.map.setCenter({lat: this.state.city.coordinates[0],
+                    lng:this.state.city.coordinates[1]})
+            });
 
     }
 
@@ -55,6 +74,8 @@ class App extends Component {
 
     return (
 
+
+
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -63,6 +84,7 @@ class App extends Component {
           <div className="main">
               <div className="map-container">
                 <div id="map" className="map"></div>
+                <button onClick={this.random.bind(this)} className="prueba">Prueba</button>
               </div>
               <SideBar city={this.state.city}/>
 
