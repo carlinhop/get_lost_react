@@ -36,8 +36,10 @@ class App extends Component {
                 console.log(this.state.city);
                 let mapHTML= document.getElementById("map");
                 mapWrap = new MapWrapper(mapHTML, {zoom: 4, center: {lat: this.state.city.coordinates[0],
-                    lng:this.state.city.coordinates[1]}});
-            }).then(()=>{
+                    lng:this.state.city.coordinates[1]}, disableDefaultUI: true});
+
+            }).then((something)=>{
+             console.log(something);
          });
 
 

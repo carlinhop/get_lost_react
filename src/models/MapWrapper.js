@@ -18,16 +18,16 @@ class MapWrapper{
         GoogleMapsLoader.load(((google)=>{
 
                 this.google = google;
-                this.map = new google.maps.Map(el,options);
-                this.createControl("Take me there");
+                this.map = new google.maps.Map(el, options);
                 this.createControl("Another");
-
-
+                this.createControl("Take me there");
 
 
 
             })
         );
+
+
 
     }
 
@@ -36,17 +36,19 @@ class MapWrapper{
         let controlDiv = document.createElement('div');
 
         // Set CSS for the control border
-        var controlUI = document.createElement('div');
+        let controlUI = document.createElement('div');
         controlUI.style.backgroundColor = '#fff';
         controlUI.style.border = '2px solid #fff';
         controlUI.style.cursor = 'pointer';
-        controlUI.style.marginBottom = '22px';
+        controlUI.style.marginTop = '500px';
+        controlUI.style.marginRight = "10px";
+
         controlUI.style.textAlign = 'center';
         controlUI.title = "";
         controlDiv.appendChild(controlUI);
 
         // Set CSS for the control interior
-        var controlText = document.createElement('div');
+        let controlText = document.createElement('div');
         controlText.style.color = 'rgb(25,25,25)';
         controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
         controlText.style.fontSize = '16px';
@@ -55,9 +57,13 @@ class MapWrapper{
         controlText.style.paddingRight = '5px';
         controlText.innerHTML = message;
         controlUI.appendChild(controlText);
+        controlText.className = "another";
         //Pushing the new control to the map
-        this.map.controls[this.google.maps.ControlPosition.TOP_RIGHT].push(controlDiv);
-        console.log(this.map.controls);
+        controlUI.addEventListener('click', function() {
+            console.log("click");
+        });
+        this.map.controls[this.google.maps.ControlPosition.TOP_CENTER].push(controlDiv);
+
 
     }
 
