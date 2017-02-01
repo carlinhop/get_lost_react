@@ -48,14 +48,13 @@ class App extends Component {
 
     componentWillUpdate(){
 
-    // this.state.mapWrap.map.setCenter({lat: this.state.city.coordinates[0],
-    // lng:this.state.city.coordinates[1]});
+
 
     }
 
-    random(){
+    anotherCity(){
 
-
+        this.state.mapWrap.map.setZoom(4);
             this.setState({city: new City(Tools.getRandomCity(this.state.countries))
             }, ()=>{
                 console.log(this.state.city);
@@ -64,6 +63,11 @@ class App extends Component {
                     lng:this.state.city.coordinates[1]})
             });
 
+    }
+
+    likeCity(){
+
+        this.state.mapWrap.map.setZoom(7);
     }
 
 
@@ -84,7 +88,8 @@ class App extends Component {
           <div className="main">
               <div className="map-container">
                 <div id="map" className="map"></div>
-                <button onClick={this.random.bind(this)} className="prueba">Prueba</button>
+                <button onClick={this.anotherCity.bind(this)} className="anotherCity">Another</button>
+                <button onClick={this.likeCity.bind(this)} className="likeCity">Like It</button>
               </div>
               <SideBar city={this.state.city}/>
 
