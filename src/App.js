@@ -52,6 +52,13 @@ class App extends Component {
 
     anotherCity(){
 
+        //Making the form disappear
+        let search = document.querySelector(".search");
+
+        if( search.style.display = "block"){
+            search.style.display = "none";
+        }
+
         this.state.mapWrap.map.setZoom(4);
             this.setState({city: new City(Tools.getRandomCity(this.state.countries))
             }, ()=>{
@@ -67,7 +74,6 @@ class App extends Component {
 
 
         this.state.mapWrap.searchMap("test", this.state.city);
-
         let search = document.querySelector(".search");
         search.style.display = "block";
     }
