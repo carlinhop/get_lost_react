@@ -68,6 +68,8 @@ class App extends Component {
     likeCity(){
 
         this.state.mapWrap.map.setZoom(7);
+        let search = document.querySelector(".search");
+        search.style.display = "block";
     }
 
 
@@ -88,6 +90,9 @@ class App extends Component {
           <div className="main">
               <div className="map-container">
                 <div id="map" className="map"></div>
+                  <form className="search">
+                      <input  type="text" placeholder="Search for something"/>
+                  </form>
                 <button onClick={this.anotherCity.bind(this)} className="anotherCity">Another</button>
                 <button onClick={this.likeCity.bind(this)} className="likeCity">Like It</button>
               </div>
