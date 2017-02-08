@@ -49,7 +49,7 @@ class MapWrapper{
         this.markers =[];
     }
 
-    searchMap(term,city){
+    centerMap(term,city){
 
         let request = {
             location:
@@ -64,6 +64,29 @@ class MapWrapper{
         service.textSearch(request, (results, status)=>{
             this.map.setCenter(results[0].geometry.location);
             this.map.setZoom(10);
+        });
+    }
+
+    searchMap(term, city){
+
+            //this.map.clearMarkers();
+
+
+
+            let request = {
+                location:
+                    new this.google.maps.LatLng(city.coordinates[0],city.coordinates[1]),
+                radius: "600",
+                query: term
+
+            };
+            
+
+            let service = new this.google.maps.places.PlacesService(this.map);
+
+        service.textSearch(request, (results, status)=>{
+            console.log(results);
+
         });
     }
 }

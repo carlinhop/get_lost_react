@@ -33,7 +33,7 @@ class App extends Component {
                 this.setState({city: new City(Tools.getRandomCity(this.state.countries))});
 
             }).then(()=>{
-                console.log(this.state.city);
+
                 let mapHTML= document.getElementById("map");
                 this.setState({mapWrap: new MapWrapper(mapHTML, {zoom: 4, center: {lat: this.state.city.coordinates[0],
                     lng:this.state.city.coordinates[1]}, disableDefaultUI: true})});
@@ -62,7 +62,7 @@ class App extends Component {
         this.state.mapWrap.map.setZoom(4);
             this.setState({city: new City(Tools.getRandomCity(this.state.countries))
             }, ()=>{
-                console.log(this.state.city);
+
 
                 this.state.mapWrap.map.setCenter({lat: this.state.city.coordinates[0],
                     lng:this.state.city.coordinates[1]})
@@ -71,11 +71,17 @@ class App extends Component {
     }
 
     likeCity(){
-
-
-        this.state.mapWrap.searchMap("test", this.state.city);
+        this.state.mapWrap.centerMap("test", this.state.city);
         let search = document.querySelector(".search");
         search.style.display = "block";
+    }
+
+    searchTerm(event){
+        let input = document.querySelector(".search")[0].value;
+        event.preventDefault();
+
+
+        this.state.mapWrap.searchMap(input, this.state.city);
     }
 
 
@@ -96,7 +102,7 @@ class App extends Component {
           <div className="main">
               <div className="map-container">
                 <div id="map" className="map"></div>
-                  <form className="search">
+                  <form className="search" onSubmit={this.searchTerm.bind(this)}>
                       <input  type="text" placeholder="Search for something"/>
                   </form>
                 <button onClick={this.anotherCity.bind(this)} className="anotherCity">Another</button>
