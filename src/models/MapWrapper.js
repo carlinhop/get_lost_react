@@ -20,10 +20,6 @@ class MapWrapper{
                 this.google = google;
                 this.map = new google.maps.Map(el, options);
 
-
-
-
-
             })
         );
 
@@ -31,41 +27,7 @@ class MapWrapper{
 
     }
 
-    // createControl(message){
-    //     // Create a div to hold the control.
-    //     let controlDiv = document.createElement('div');
-    //
-    //     // Set CSS for the control border
-    //     let controlUI = document.createElement('div');
-    //     controlUI.style.backgroundColor = '#fff';
-    //     controlUI.style.border = '2px solid #fff';
-    //     controlUI.style.cursor = 'pointer';
-    //     controlUI.style.marginTop = '500px';
-    //     controlUI.style.marginRight = "10px";
-    //
-    //     controlUI.style.textAlign = 'center';
-    //     controlUI.title = "";
-    //     controlDiv.appendChild(controlUI);
-    //
-    //     // Set CSS for the control interior
-    //     let controlText = document.createElement('div');
-    //     controlText.style.color = 'rgb(25,25,25)';
-    //     controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
-    //     controlText.style.fontSize = '16px';
-    //     controlText.style.lineHeight = '38px';
-    //     controlText.style.paddingLeft = '5px';
-    //     controlText.style.paddingRight = '5px';
-    //     controlText.innerHTML = message;
-    //     controlUI.appendChild(controlText);
-    //
-    //     controlUI.className = "another";
-    //
-    //
-    //     //Pushing the new control to the map
-    //     this.map.controls[this.google.maps.ControlPosition.TOP_CENTER].push(controlDiv);
-    //
-    //
-    // }
+
 
     createMap(){
         this.map = null;
@@ -85,6 +47,24 @@ class MapWrapper{
 
     clearAllMarkers(){
         this.markers =[];
+    }
+
+    searchMap(term,city){
+
+        let request = {
+            location:
+                new this.google.maps.LatLng(city.coordinates[0],city.coordinates[1]),
+            radius: "1000",
+            query: city.name
+        };
+
+
+        let service = new this.google.maps.places.PlacesService(this.map);
+        console.log(service);
+        service.textSearch(request, (results, status)=>{
+            this.map.setCenter(results[0].geometry.location);
+            this.map.setZoom(10);
+        });
     }
 }
 

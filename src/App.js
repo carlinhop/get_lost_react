@@ -37,8 +37,6 @@ class App extends Component {
                 let mapHTML= document.getElementById("map");
                 this.setState({mapWrap: new MapWrapper(mapHTML, {zoom: 4, center: {lat: this.state.city.coordinates[0],
                     lng:this.state.city.coordinates[1]}, disableDefaultUI: true})});
-
-
             });
 
 
@@ -67,7 +65,9 @@ class App extends Component {
 
     likeCity(){
 
-        this.state.mapWrap.map.setZoom(7);
+
+        this.state.mapWrap.searchMap("test", this.state.city);
+
         let search = document.querySelector(".search");
         search.style.display = "block";
     }

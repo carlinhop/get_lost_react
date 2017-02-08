@@ -52,20 +52,20 @@ html, body {
 
 .anotherCity{
     position: fixed;
-    margin-top: 30%;
+    margin-top: 40%;
     z-index: 2;
 }
 
 .likeCity{
     position: fixed;
-    margin-top: 30%;
+    margin-top: 40%;
     margin-left: 5%;
     z-index: 2;
 }
 
 .search{
     position: fixed;
-    margin-top: 25%;
+    margin-top: 35%;
     margin-left: 2.5%;
     z-index: 2;
     display: none;
