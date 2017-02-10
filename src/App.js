@@ -90,20 +90,17 @@ class App extends Component {
         let input = document.querySelector(".search")[0].value;
         event.preventDefault();
 
-        console.log(this.state.mapWrap.searchMap(input, this.state.coordinates));
 
-        this.setState(()=>{
-
-            return {results: "hello"}
-
-
+        this.state.mapWrap.searchMap(input, this.state.coordinates).then((results)=>{
+            this.setState({places: results});
         });
+
     }
 
 
     render() {
 
-        console.log(this.state.results);
+        console.log(this.state.places);
 
         return (
 

@@ -61,25 +61,31 @@ class MapWrapper {
     }
 
     searchMap(term) {
-        let places;
-        let request = {
-            location: this.newCoords,
-            radius: "600",
-            query: term
-        };
-        let service = new this.google.maps.places.PlacesService(this.map);
+        let promise = new Promise((resolve, reject)=>{
+            let request = {
+                location: this.newCoords,
+                radius: "600",
+                query: term
+            };
+            let service = new this.google.maps.places.PlacesService(this.map);
 
-       return  service.textSearch(request, (results, status) => {
-            places = results;
-            for(let place of results){
+            service.textSearch(request, (results, status) => {
+                if(status){
 
-                this.addMarkers(place);
-            }
-            console.log(results);
+                    for(let place of results){
 
+                        this.addMarkers(place);
+                    }
+                    //console.log(results);
+                    resolve(results);
+                }
+
+
+            });
         });
 
 
+        return promise;
     }
 
     addMarkers(place){
