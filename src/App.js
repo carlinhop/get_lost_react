@@ -100,7 +100,7 @@ class App extends Component {
 
     render() {
 
-        console.log(this.state.places);
+
 
         return (
 
@@ -120,7 +120,7 @@ class App extends Component {
                         <button onClick={this.anotherCity.bind(this)} className="anotherCity">Another</button>
                         <button onClick={this.likeCity.bind(this)} className="likeCity">Like It</button>
                     </div>
-                    <SideBar city={this.state.city}/>
+                    <SideBar city={this.state.city} places={this.state.places}/>
                 </div>
             </div>
         );
