@@ -13,7 +13,7 @@ class App extends Component {
     constructor(props) {
 
         super(props);
-        this.state = {};
+        this.state = {results: null};
 
 
     }
@@ -82,7 +82,6 @@ class App extends Component {
 
         this.state.mapWrap.centerMap("test", this.state.city);
 
-
         let search = document.querySelector(".search");
         search.style.display = "block";
     }
@@ -91,13 +90,20 @@ class App extends Component {
         let input = document.querySelector(".search")[0].value;
         event.preventDefault();
 
+        console.log(this.state.mapWrap.searchMap(input, this.state.coordinates));
 
-        this.state.mapWrap.searchMap(input, this.state.coordinates);
+        this.setState(()=>{
+
+            return {results: "hello"}
+
+
+        });
     }
 
 
     render() {
 
+        console.log(this.state.results);
 
         return (
 
@@ -118,8 +124,6 @@ class App extends Component {
                         <button onClick={this.likeCity.bind(this)} className="likeCity">Like It</button>
                     </div>
                     <SideBar city={this.state.city}/>
-
-
                 </div>
             </div>
         );

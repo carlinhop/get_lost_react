@@ -28,10 +28,6 @@ class MapWrapper {
     }
 
 
-    createMap() {
-        this.map = null;
-    }
-
     deleteMarker(marker) {
 
     }
@@ -65,8 +61,7 @@ class MapWrapper {
     }
 
     searchMap(term) {
-
-        //this.map.clearMarkers();
+        let places;
         let request = {
             location: this.newCoords,
             radius: "600",
@@ -74,20 +69,29 @@ class MapWrapper {
         };
         let service = new this.google.maps.places.PlacesService(this.map);
 
-        service.textSearch(request, (results, status) => {
+       return  service.textSearch(request, (results, status) => {
+            places = results;
             for(let place of results){
+
                 this.addMarkers(place);
             }
+            console.log(results);
 
         });
+
+
     }
 
     addMarkers(place){
         let marker = new this.google.maps.Marker({
             position: {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()},
-            map: this.map
+            map: this.map,
+
         });
+        marker.setAnimation(this.google.maps.Animation.DROP);
         this.markers.push(marker);
+
+
 
         let infowindow = new this.google.maps.InfoWindow({content: place.name});
         marker.addListener('mouseover', function() {
