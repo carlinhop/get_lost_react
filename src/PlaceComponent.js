@@ -10,7 +10,7 @@ import React from 'react';
 import { Router, Route, Link, browserHistory } from 'react-router';
 
 
-let PlaceComponent = function({place}){
+let PlaceComponent = function({place, key}){
 
     if (place == null || place.length === 0) {
         return <p>Loading...</p>;
@@ -19,9 +19,10 @@ let PlaceComponent = function({place}){
 
     else {
 
+
         return (
 
-        <scroll-page  className="place" id="page-1">
+        <scroll-page  className="place" key={key}>
             <div >
                 <h2>{place.name}</h2>
                 <h3>{place.rating}</h3>

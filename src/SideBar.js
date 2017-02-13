@@ -17,10 +17,14 @@ let SideBar = function({places, city}){
         if(places){
 
             let placesDom = [];
-
-            for (let place of places){
-                let placedom = <PlaceComponent place={place}> </PlaceComponent>;
+            let index = 0;
+            let sortedPlaces = places.sort((a,b)=>{
+                return   b.rating - a.rating;
+            })
+            for (let place of sortedPlaces){
+                let placedom = <PlaceComponent place={place} key={index}> </PlaceComponent>;
                 placesDom.push(placedom);
+                index++;
                 console.log(place);
 
             }
