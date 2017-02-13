@@ -20,11 +20,17 @@ let PlaceComponent = function({place}){
     else {
 
         return (
-            <div className="place">
 
-                <h1>{place.name}</h1>
+        <scroll-page  className="place" id="page-1">
+            <div >
+                <h2>{place.name}</h2>
+                <h3>{place.rating}</h3>
+            </div>
 
-            </div>)
+
+        </scroll-page>
+
+)
     }
 }
 

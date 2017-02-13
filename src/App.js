@@ -53,7 +53,7 @@ class App extends Component {
     anotherCity() {
 
         this.state.mapWrap.clearAllMarkers();
-        
+
 
         //Making the form disappear and clearing it
         let search = document.querySelector(".search");

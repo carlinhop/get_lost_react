@@ -22,6 +22,7 @@ html, body {
     flex-direction: row;
     height: 100%;
     width: 100%;
+
 }
 
 .map-container{
@@ -47,6 +48,7 @@ html, body {
 .sidebar{
     height: 100%;
     width: 35%;
+    overflow: hidden;
 
 }
 
@@ -69,5 +71,31 @@ html, body {
     margin-left: 2.5%;
     z-index: 2;
     display: none;
+
+}
+
+scroll-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    width: 100%;
+    height: 100%;
+
+}
+
+scroll-page {
+
+    align-items: center;
+    min-height: min-content;
+    margin: auto;
+    height: 20%;
+    margin: 0;
+    background-color: aliceblue;
+    border: 1px solid black;
+}
+
+.place {
+
 
 }

@@ -21,10 +21,14 @@ let SideBar = function({places, city}){
             for (let place of places){
                 let placedom = <PlaceComponent place={place}> </PlaceComponent>;
                 placesDom.push(placedom);
+                console.log(place);
 
             }
-        console.log(placesDom);
-        return (<div className="sidebar">{placesDom}</div>);
+
+            return (
+                <div className="sidebar">
+                    <scroll-container> {placesDom}</scroll-container>
+                </div>);
 
         }
         return (
