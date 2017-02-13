@@ -64,7 +64,7 @@ class MapWrapper {
         let promise = new Promise((resolve, reject)=>{
             let request = {
                 location: this.newCoords,
-                radius: "600",
+                radius: "1000",
                 query: term
             };
             let service = new this.google.maps.places.PlacesService(this.map);

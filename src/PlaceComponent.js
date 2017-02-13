@@ -10,7 +10,7 @@ import React from 'react';
 import { Router, Route, Link, browserHistory } from 'react-router';
 
 
-let PlaceComponent = function({place, key, selectFunction}){
+let PlaceComponent = function({place, selectFunction}){
 
     if (place == null || place.length === 0) {
         return <p>Loading...</p>;
@@ -22,7 +22,7 @@ let PlaceComponent = function({place, key, selectFunction}){
 
         return (
 
-        <scroll-page  className="place" id={place.place_id.toString()} onClick={selectFunction}>
+        <scroll-page  className="place"  id={place.place_id.toString()} onClick={selectFunction}>
             <div>
                 <h2>{place.name}</h2>
                 <h3>{place.rating}</h3>

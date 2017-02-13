@@ -125,7 +125,7 @@ class App extends Component {
             console.log(this.state.city);
         });
 
-        selectedDom.style.backgroundColor = "blue"
+        selectedDom.style.backgroundColor = "grey"
     }
 
 

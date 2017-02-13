@@ -17,14 +17,12 @@ let SideBar = function({places, city, selectFunction}){
         if(places){
 
             let placesDom = [];
-            let index = 0;
+            let i = 0;
 
             for (let place of places){
-                let placedom = <PlaceComponent place={place} key={index.toString()} selectFunction={selectFunction}> </PlaceComponent>;
+                let placedom = <PlaceComponent place={place} key={places.indexOf(place)} selectFunction={selectFunction}> </PlaceComponent>;
                 placesDom.push(placedom);
-                index++;
-
-
+                i++;
             }
 
             return (
