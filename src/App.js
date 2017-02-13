@@ -107,7 +107,7 @@ class App extends Component {
              return event.currentTarget.id === place.place_id;
          });
 
-        this.setState((prevStatus, props)=>{
+        this.setState((prevStatus)=>{
 
                 let oldList = prevStatus.selectedList;
 
@@ -119,7 +119,8 @@ class App extends Component {
 
 
         }, ()=>{
-            console.log(this.state.selectedList);
+            this.state.city.places = this.state.selectedList;
+            console.log(this.state.city);
         });
 
 
