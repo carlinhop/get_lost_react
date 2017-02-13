@@ -92,7 +92,9 @@ class App extends Component {
 
 
         this.state.mapWrap.searchMap(input, this.state.coordinates).then((results)=>{
-            this.setState({places: results});
+            this.setState({places: results.sort((a,b)=>{
+                return   b.rating - a.rating;
+            })});
         });
 
     }
@@ -101,7 +103,7 @@ class App extends Component {
 
     selectPlace(event){
 
-
+         let selectedDom = event.currentTarget;
          let selected = this.state.places.find((place)=>{
 
              return event.currentTarget.id === place.place_id;
@@ -123,7 +125,7 @@ class App extends Component {
             console.log(this.state.city);
         });
 
-
+        selectedDom.style.backgroundColor = "blue"
     }
 
 

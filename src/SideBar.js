@@ -18,11 +18,9 @@ let SideBar = function({places, city, selectFunction}){
 
             let placesDom = [];
             let index = 0;
-            let sortedPlaces = places.sort((a,b)=>{
-                return   b.rating - a.rating;
-            })
-            for (let place of sortedPlaces){
-                let placedom = <PlaceComponent place={place} key={index} selectFunction={selectFunction}> </PlaceComponent>;
+
+            for (let place of places){
+                let placedom = <PlaceComponent place={place} key={index.toString()} selectFunction={selectFunction}> </PlaceComponent>;
                 placesDom.push(placedom);
                 index++;
 
