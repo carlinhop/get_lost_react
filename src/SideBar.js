@@ -6,7 +6,7 @@ import React from 'react';
 import { Router, Route, Link, browserHistory } from 'react-router';
 import PlaceComponent from './PlaceComponent';
 
-let SideBar = function({places, city}){
+let SideBar = function({places, city, selectFunction}){
 
     if (city == null || city.length === 0) {
         return <p>Loading...</p>;
@@ -22,7 +22,7 @@ let SideBar = function({places, city}){
                 return   b.rating - a.rating;
             })
             for (let place of sortedPlaces){
-                let placedom = <PlaceComponent place={place} key={index}> </PlaceComponent>;
+                let placedom = <PlaceComponent place={place} key={index} selectFunction={selectFunction}> </PlaceComponent>;
                 placesDom.push(placedom);
                 index++;
                 console.log(place);

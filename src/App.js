@@ -97,6 +97,10 @@ class App extends Component {
 
     }
 
+    selectPlace(event){
+        console.log(event.currentTarget);
+    }
+
 
     render() {
 
@@ -120,7 +124,8 @@ class App extends Component {
                         <button onClick={this.anotherCity.bind(this)} className="anotherCity">Another</button>
                         <button onClick={this.likeCity.bind(this)} className="likeCity">Like It</button>
                     </div>
-                    <SideBar city={this.state.city} places={this.state.places}/>
+                    <SideBar city={this.state.city} places={this.state.places} selectFunction={this.selectPlace}/>
+
                 </div>
             </div>
         );
