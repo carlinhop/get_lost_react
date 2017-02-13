@@ -25,7 +25,7 @@ let SideBar = function({places, city, selectFunction}){
                 let placedom = <PlaceComponent place={place} key={index} selectFunction={selectFunction}> </PlaceComponent>;
                 placesDom.push(placedom);
                 index++;
-                console.log(place);
+
 
             }
 

@@ -26,7 +26,6 @@ let PlaceComponent = function({place, key, selectFunction}){
             <div>
                 <h2>{place.name}</h2>
                 <h3>{place.rating}</h3>
-
             </div>
 
 

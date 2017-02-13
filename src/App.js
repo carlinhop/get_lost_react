@@ -13,7 +13,7 @@ class App extends Component {
     constructor(props) {
 
         super(props);
-        this.state = {results: null};
+        this.state = {results: null, selectedList: []};
 
 
     }
@@ -97,8 +97,32 @@ class App extends Component {
 
     }
 
+
+
     selectPlace(event){
-        console.log(event.currentTarget);
+
+
+         let selected = this.state.places.find((place)=>{
+
+             return event.currentTarget.id === place.place_id;
+         });
+
+        this.setState((prevStatus, props)=>{
+
+                let oldList = prevStatus.selectedList;
+
+                oldList.push(selected);
+            return {
+            selectedList: oldList
+            }
+
+
+
+        }, ()=>{
+            console.log(this.state.selectedList);
+        });
+
+
     }
 
 
@@ -124,7 +148,7 @@ class App extends Component {
                         <button onClick={this.anotherCity.bind(this)} className="anotherCity">Another</button>
                         <button onClick={this.likeCity.bind(this)} className="likeCity">Like It</button>
                     </div>
-                    <SideBar city={this.state.city} places={this.state.places} selectFunction={this.selectPlace}/>
+                    <SideBar city={this.state.city} places={this.state.places} selectFunction={this.selectPlace.bind(this)}/>
 
                 </div>
             </div>
