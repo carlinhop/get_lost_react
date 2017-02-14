@@ -87,6 +87,23 @@ class App extends Component {
     }
 
     searchTerm(event) {
+
+        try{
+            // //Clearing the selection styling on the sidebar
+            let placeRows = document.querySelectorAll("scroll-page");
+            console.log(placeRows);
+
+            if(placeRows){
+                for (let row of placeRows){
+                    row.style.backgroundColor = "aliceblue";
+                }
+            }
+        }
+
+        catch(error) {
+            console.log(error);
+        }
+
         let input = document.querySelector(".search")[0].value;
         event.preventDefault();
 
