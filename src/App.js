@@ -129,12 +129,12 @@ class App extends Component {
 
         this.setState((prevStatus)=>{
                 let oldList = prevStatus.selectedList;
+                let city = prevStatus.city;
                 oldList.push(selected);
-            return {
-            selectedList: oldList
-            }
+                city.places = oldList;
+            return {city: city}
         }, ()=>{
-            this.state.city.places = this.state.selectedList;
+            console.log(this.state.city.places);
         });
         selectedDom.style.backgroundColor = "grey"
     }
@@ -145,7 +145,7 @@ class App extends Component {
         let itineraryDom = document.querySelector(".itinerary").style.display = "block";
 
         // let itineraryDom = ;
-        console.log(document.querySelector(".itinerary"));
+        console.log(this.state.city);
     }
 
 
