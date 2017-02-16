@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 import Tools from './models/Tools';
 import City from "./models/City";
 import Place from "./models/Place";
+import User from "./models/User";
 import MapWrapper from "./models/MapWrapper";
 import SideBar from "./SideBar";
+import HeaderComponent from "./HeaderComponent";
+import ItineraryComponent from "./ItineraryComponent";
 
 
 class App extends Component {
@@ -117,8 +120,6 @@ class App extends Component {
 
     }
 
-
-
     selectPlace(event){
 
          let selectedDom = event.currentTarget;
@@ -138,20 +139,22 @@ class App extends Component {
         selectedDom.style.backgroundColor = "grey"
     }
 
+    showItinerary(){
+        let mapDom = document.querySelector(".map-container").style.display = "none";
+        let sidebarDom = document.querySelector(".sidebar").style.display = "none";
+        let itineraryDom = document.querySelector(".itinerary").style.display = "block";
+
+        // let itineraryDom = ;
+        console.log(document.querySelector(".itinerary"));
+    }
+
 
     render() {
 
-
-
         return (
 
-
-
             <div className="App">
-                <div className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <h2>Welcome to React</h2>
-                </div>
+                <HeaderComponent show={this.showItinerary.bind(this)}/>
                 <div className="main">
                     <div className="map-container">
                         <div id="map" className="map"></div>
@@ -162,7 +165,7 @@ class App extends Component {
                         <button onClick={this.likeCity.bind(this)} className="likeCity">Like It</button>
                     </div>
                     <SideBar city={this.state.city} places={this.state.places} selectFunction={this.selectPlace.bind(this)}/>
-
+                    <ItineraryComponent city={this.state.city} />
                 </div>
             </div>
         );

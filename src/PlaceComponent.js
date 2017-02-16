@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { Router, Route, Link, browserHistory } from 'react-router';
+
 
 
 let PlaceComponent = function({place, selectFunction}){

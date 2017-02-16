@@ -99,3 +99,13 @@ scroll-page:hover {
 background-color: darkgrey;
 
 }
+
+.itinerary{
+    display: none;
+}
+
+.App-header{
+    display: flex;
+    justify-content: space-around;
+
+}
