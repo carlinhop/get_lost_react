@@ -18,20 +18,14 @@ let PlaceComponent = function({place, selectFunction}){
 
 
     else {
-
-
         return (
-
         <scroll-page  className="place"  id={place.place_id.toString()} onClick={selectFunction}>
             <div>
                 <h2>{place.name}</h2>
                 <h3>{place.rating}</h3>
             </div>
-
-
         </scroll-page>
-
-)
+        )
     }
 }
 

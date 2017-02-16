@@ -2,6 +2,7 @@
  * Created by carlospereira on 16/02/2017.
  */
 import React from 'react';
+import ItineraryPlace from './ItineraryPlaceComponent'
 
 let ItineraryComponent = function({city}){
 
@@ -15,17 +16,17 @@ let ItineraryComponent = function({city}){
     else {
 
         if(city.places.length>0) {
-
+            let itineraryPlaces = [];
+            for(let place of city.places){
+                itineraryPlaces.push(<ItineraryPlace place={place}/>);
+            }
             return (
-
                 <div className="itinerary">
-                    <h1>Itinerary</h1>
-                    <h3>{city.places[0].name}</h3>
-
-
+                    <h2>{city.name}</h2>
+                    {itineraryPlaces}
                 </div>
-            )
 
+            )
         }
 
         else {
