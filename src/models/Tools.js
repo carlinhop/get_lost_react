@@ -1,7 +1,6 @@
 class Tools{
 
      static xmlHttp(url, action){
-
          //This is how you have to use xmlHttp:
          //Tools.xmlHttp("https://restcountries.eu/rest/v1/all")
          // .then((results)=>{console.log(results)},(error)=>{console.log(error)})
@@ -9,11 +8,8 @@ class Tools{
          let promise = new Promise((resolve, reject) => {
 
              let request = new XMLHttpRequest();
-
              request.open(action, url);
-
              request.onload = function() {
-
                  if (request.status === 200) {
                      resolve(JSON.parse(request.response));
                  }
@@ -34,9 +30,7 @@ class Tools{
 
 
      static getRandomCity(countries){
-
          let randomNumber =  Tools.getRandomNumber(countries)
-
          let randomCityData = {
              name: countries[randomNumber].capital,
              coordinates: countries[randomNumber].latlng,

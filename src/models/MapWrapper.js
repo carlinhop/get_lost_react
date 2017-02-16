@@ -76,7 +76,7 @@ class MapWrapper {
 
                         this.addMarkers(place);
                     }
-                    //console.log(results);
+
                     resolve(results);
                 }
 

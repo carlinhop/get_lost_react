@@ -22,6 +22,8 @@ class App extends Component {
 
         let mapWrap;
 
+
+
         Tools.xmlHttp("https://restcountries.eu/rest/v1/all", "GET")
             .then((results) => {
                 this.setState({countries: results});
@@ -41,8 +43,6 @@ class App extends Component {
                 })
             });
         });
-
-
     }
 
     componentWillUpdate() {
@@ -84,6 +84,7 @@ class App extends Component {
 
         let search = document.querySelector(".search");
         search.style.display = "block";
+        document.querySelector("input").focus();
     }
 
     searchTerm(event) {
@@ -122,26 +123,18 @@ class App extends Component {
 
          let selectedDom = event.currentTarget;
          let selected = this.state.places.find((place)=>{
-
              return event.currentTarget.id === place.place_id;
          });
 
         this.setState((prevStatus)=>{
-
                 let oldList = prevStatus.selectedList;
-
                 oldList.push(selected);
             return {
             selectedList: oldList
             }
-
-
-
         }, ()=>{
             this.state.city.places = this.state.selectedList;
-            console.log(this.state.city);
         });
-
         selectedDom.style.backgroundColor = "grey"
     }
 
@@ -163,7 +156,7 @@ class App extends Component {
                     <div className="map-container">
                         <div id="map" className="map"></div>
                         <form className="search" onSubmit={this.searchTerm.bind(this)}>
-                            <input type="text" placeholder="Search for something"/>
+                            <input type="text"  placeholder="Search for something" />
                         </form>
                         <button onClick={this.anotherCity.bind(this)} className="anotherCity">Another</button>
                         <button onClick={this.likeCity.bind(this)} className="likeCity">Like It</button>
