@@ -18,8 +18,10 @@ class MapWrapper {
 
         GoogleMapsLoader.load(((google) => {
 
-                this.google = google;
-                this.map = new google.maps.Map(el, options);
+
+            this.google = google;
+            this.map = new google.maps.Map(el, options);
+
 
             })
         );
@@ -38,7 +40,8 @@ class MapWrapper {
         }
     }
 
-    centerMap(term, city) {
+
+    getGooglePlace(city){
 
         let request = {
             location: new this.google.maps.LatLng(city.coordinates[0], city.coordinates[1]),
@@ -46,18 +49,12 @@ class MapWrapper {
             query: city.name
         };
 
-
         let service = new this.google.maps.places.PlacesService(this.map);
 
         let promise = new Promise((resolve, reject)=>{
 
             service.textSearch(request, (results, status) => {
-                this.map.setCenter(results[0].geometry.location);
-                this.map.setZoom(10);
-
                 this.newCoords = results[0].geometry.location;
-                // console.log(results[0].photos[0].getUrl({"maxWidth": results[0].photos[0].width, "maxHeigth":
-                //     results[0].photos[0].height }));
                 resolve(results[0].photos[0].getUrl({"maxWidth": 500, "maxHeigth": 400}));
                 reject(status);
             });
@@ -66,6 +63,15 @@ class MapWrapper {
         });
 
         return promise;
+
+
+    }
+
+    centerMap() {
+
+        this.map.setCenter(this.newCoords);
+        this.map.setZoom(10);
+
     }
 
     searchMap(term) {

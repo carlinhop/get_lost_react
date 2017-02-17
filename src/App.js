@@ -25,16 +25,14 @@ class App extends Component {
 
         let mapWrap;
 
-
-
         Tools.xmlHttp("https://restcountries.eu/rest/v1/all", "GET")
-            .then((results) => {
+            .then((results)=>{
                 this.setState({countries: results});
 
-            }).then(() => {
+            }).then(()=>{
             this.setState({city: new City(Tools.getRandomCity(this.state.countries))});
 
-        }).then(() => {
+        }).then(()=>{
 
             let mapHTML = document.getElementById("map");
             this.setState({
@@ -44,7 +42,16 @@ class App extends Component {
                         lng: this.state.city.coordinates[1]
                     }, disableDefaultUI: true
                 })
-            });
+            })
+
+        }).then(()=>{
+
+            setTimeout(()=>{
+                this.state.mapWrap.getGooglePlace(this.state.city).then((result)=>{
+                    this.setState({photo: result});
+                });
+            }, 50);
+
         });
     }
 
@@ -71,24 +78,29 @@ class App extends Component {
             city: new City(Tools.getRandomCity(this.state.countries))
         }, () => {
 
-
             this.state.mapWrap.map.setCenter({
                 lat: this.state.city.coordinates[0],
                 lng: this.state.city.coordinates[1]
             })
         });
 
+        // I have to fix this !!! Using setTimeout seems wrong
+        setTimeout(()=>{
+            this.state.mapWrap.getGooglePlace(this.state.city).then((result)=>{
+                this.setState({photo: result});
+            });
+        }, 1000);
+
+
+
     }
 
     likeCity() {
 
-        this.state.mapWrap.centerMap("test", this.state.city).then((results)=>{
-            this.setState({photo: results});
-            console.log(this.state.photo)
-        });
-        // this.setState({photo: this.state.mapWrap.centerMap("test", this.state.city)}, () => {
-        //     console.log(this.state.photo);
-        // });
+
+        this.state.mapWrap.centerMap();
+
+
 
         let search = document.querySelector(".search");
         search.style.display = "block";
