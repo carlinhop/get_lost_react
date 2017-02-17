@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46bc9013-64ae-49c9-99be-9e2fea32752a" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/SelectedPlaceComponent.js" afterPath="$PROJECT_DIR$/src/ItineraryPlaceComponent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ItineraryComponent.js" afterPath="$PROJECT_DIR$/src/ItineraryComponent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PlaceComponent.js" afterPath="$PROJECT_DIR$/src/PlaceComponent.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ItineraryPlaceComponent.js" afterPath="$PROJECT_DIR$/src/ItineraryPlaceComponent.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -69,7 +66,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ItineraryComponent.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ItineraryComponent.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ItineraryComponent.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
@@ -125,11 +122,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ItineraryPlaceComponent.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ItineraryPlaceComponent.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ItineraryPlaceComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="18" column="41" lean-forward="true" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+            <state relative-caret-position="255">
+              <caret line="19" column="43" lean-forward="true" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -167,8 +164,8 @@
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/SelectedPlaceComponent.js" />
         <option value="$PROJECT_DIR$/src/PlaceComponent.js" />
-        <option value="$PROJECT_DIR$/src/ItineraryPlaceComponent.js" />
         <option value="$PROJECT_DIR$/src/ItineraryComponent.js" />
+        <option value="$PROJECT_DIR$/src/ItineraryPlaceComponent.js" />
       </list>
     </option>
   </component>
@@ -343,12 +340,12 @@
       <workItem from="1486570092775" duration="5006000" />
       <workItem from="1486721526921" duration="18984000" />
       <workItem from="1487156373111" duration="1492000" />
-      <workItem from="1487241890295" duration="12579000" />
+      <workItem from="1487241890295" duration="12817000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104671000" />
+    <option name="totallyTimeSpent" value="104909000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1260" height="729" extended-state="0" />
@@ -672,7 +669,7 @@
         <state relative-caret-position="300">
           <caret line="22" column="7" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
           <folding>
-            <element signature="e#43#71#0" expanded="true" />
+            <element signature="e#43#71#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -803,14 +800,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ItineraryPlaceComponent.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="41" lean-forward="true" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ItineraryComponent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -818,6 +807,14 @@
           <folding>
             <element signature="e#51#77#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ItineraryPlaceComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="43" lean-forward="true" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
