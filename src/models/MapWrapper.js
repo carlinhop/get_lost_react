@@ -2,33 +2,22 @@
  * Created by user on 22/01/2017.
  */
 
-import GoogleMapsLoader from "google-maps";
-GoogleMapsLoader.LIBRARIES = ["geometry", "places"];
-GoogleMapsLoader.KEY = "AIzaSyCc3GjnrXBW2p637XJUP6wbPR8LoqXkaFo";
-
 class MapWrapper {
 
-    constructor(el, options) {
+
+    constructor(el, options, google) {
 
         this.map = {};
         this.markers = [];
-        this.google = null;
+        this.google = google;
         this.newCoords = null;
 
 
-        GoogleMapsLoader.load(((google) => {
-
-
-            this.google = google;
-            this.map = new google.maps.Map(el, options);
-
-
-            })
-        );
+        this.google = google;
+        this.map = new google.maps.Map(el, options);
 
 
     }
-
 
     deleteMarker(marker) {
 
@@ -55,16 +44,12 @@ class MapWrapper {
 
             service.textSearch(request, (results, status) => {
                 this.newCoords = results[0].geometry.location;
-                resolve(results[0].photos[0].getUrl({"maxWidth": 500, "maxHeigth": 400}));
+                resolve(results[0].photos[0].getUrl({"maxWidth": 500, "maxHeight": 400}));
                 reject(status);
             });
-
-
         });
 
         return promise;
-
-
     }
 
     centerMap() {
@@ -81,6 +66,7 @@ class MapWrapper {
                 radius: "1000",
                 query: term
             };
+
             let service = new this.google.maps.places.PlacesService(this.map);
 
             service.textSearch(request, (results, status) => {
@@ -93,11 +79,8 @@ class MapWrapper {
 
                     resolve(results);
                 }
-
-
             });
         });
-
 
         return promise;
     }

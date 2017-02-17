@@ -10,6 +10,10 @@ import SideBar from "./SideBar";
 import HeaderComponent from "./HeaderComponent";
 import ItineraryComponent from "./ItineraryComponent";
 
+import GoogleMapsLoader from "google-maps";
+GoogleMapsLoader.LIBRARIES = ["geometry", "places"];
+GoogleMapsLoader.KEY = "AIzaSyCc3GjnrXBW2p637XJUP6wbPR8LoqXkaFo";
+
 
 class App extends Component {
 
@@ -17,42 +21,48 @@ class App extends Component {
 
         super(props);
         this.state = {results: null, selectedList: []};
-
-
     }
 
     componentDidMount() {
 
-        let mapWrap;
 
-        Tools.xmlHttp("https://restcountries.eu/rest/v1/all", "GET")
-            .then((results)=>{
-                this.setState({countries: results});
+        GoogleMapsLoader.load(((google) => {
+                this.setState({google: google}, ()=> {
 
-            }).then(()=>{
-            this.setState({city: new City(Tools.getRandomCity(this.state.countries))});
+                        let mapWrap;
 
-        }).then(()=>{
+                        Tools.xmlHttp("https://restcountries.eu/rest/v1/all", "GET")
+                            .then((results) => {
+                                this.setState({countries: results});
 
-            let mapHTML = document.getElementById("map");
-            this.setState({
-                mapWrap: new MapWrapper(mapHTML, {
-                    zoom: 4, center: {
-                        lat: this.state.city.coordinates[0],
-                        lng: this.state.city.coordinates[1]
-                    }, disableDefaultUI: true
-                })
+                            }).then(() => {
+                            this.setState({city: new City(Tools.getRandomCity(this.state.countries))});
+
+                        }).then(() => {
+
+                            let mapHTML = document.getElementById("map");
+                            this.setState({
+                                mapWrap: new MapWrapper(mapHTML, {
+                                    zoom: 4, center: {
+                                        lat: this.state.city.coordinates[0],
+                                        lng: this.state.city.coordinates[1]
+                                    }, disableDefaultUI: true
+                                }, this.state.google)
+                            })
+
+                        }).then(() => {
+                            this.state.mapWrap.getGooglePlace(this.state.city).then((result) => {
+                                this.setState({photo: result});
+                            });
+                        });
+                    }
+
+                );
+
             })
+        );
 
-        }).then(()=>{
-            // I have to fix this !!! Using setTimeout seems wrong
-            setTimeout(()=>{
-                this.state.mapWrap.getGooglePlace(this.state.city).then((result)=>{
-                    this.setState({photo: result});
-                });
-            }, 1000);
 
-        });
     }
 
     componentWillUpdate() {
@@ -83,21 +93,13 @@ class App extends Component {
                 lng: this.state.city.coordinates[1]
             });
 
-            this.state.mapWrap.getGooglePlace(this.state.city).then((result)=>{
+            this.state.mapWrap.getGooglePlace(this.state.city).then((result) => {
                 this.setState({photo: result});
-        });
-
-
-        setTimeout(()=>{
-            console.log(this.state.city);
             });
-        }, 0);
-
-
-
+        });
     }
 
-    likeCity() {
+    likeCity(){
 
 
         this.state.mapWrap.centerMap();
