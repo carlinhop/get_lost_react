@@ -82,12 +82,18 @@ class App extends Component {
 
     likeCity() {
 
-
-        this.state.mapWrap.centerMap("test", this.state.city);
+        this.state.mapWrap.centerMap("test", this.state.city).then((results)=>{
+            this.setState({photo: results});
+            console.log(this.state.photo)
+        });
+        // this.setState({photo: this.state.mapWrap.centerMap("test", this.state.city)}, () => {
+        //     console.log(this.state.photo);
+        // });
 
         let search = document.querySelector(".search");
         search.style.display = "block";
         document.querySelector("input").focus();
+
     }
 
     searchTerm(event) {
@@ -164,7 +170,7 @@ class App extends Component {
                         <button onClick={this.anotherCity.bind(this)} className="anotherCity">Another</button>
                         <button onClick={this.likeCity.bind(this)} className="likeCity">Like It</button>
                     </div>
-                    <SideBar city={this.state.city} places={this.state.places} selectFunction={this.selectPlace.bind(this)}/>
+                    <SideBar city={this.state.city} places={this.state.places} photo={this.state.photo}selectFunction={this.selectPlace.bind(this)}/>
                     <ItineraryComponent city={this.state.city} />
                 </div>
             </div>

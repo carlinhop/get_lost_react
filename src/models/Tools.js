@@ -24,7 +24,7 @@ class Tools{
      }
 
      static getRandomNumber(elementsArray){
-         let randomNumber = parseInt(Math.random() * (elementsArray.length - 1) + 1);
+         let randomNumber = parseInt(Math.random() * (elementsArray.length - 1));
          return randomNumber;
      }
 

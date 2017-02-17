@@ -49,15 +49,23 @@ class MapWrapper {
 
         let service = new this.google.maps.places.PlacesService(this.map);
 
-        service.textSearch(request, (results, status) => {
-            this.map.setCenter(results[0].geometry.location);
-            this.map.setZoom(10);
+        let promise = new Promise((resolve, reject)=>{
 
-             this.newCoords = results[0].geometry.location;
+            service.textSearch(request, (results, status) => {
+                this.map.setCenter(results[0].geometry.location);
+                this.map.setZoom(10);
+
+                this.newCoords = results[0].geometry.location;
+                // console.log(results[0].photos[0].getUrl({"maxWidth": results[0].photos[0].width, "maxHeigth":
+                //     results[0].photos[0].height }));
+                resolve(results[0].photos[0].getUrl({"maxWidth": 500, "maxHeigth": 400}));
+                reject(status);
+            });
+
 
         });
 
-
+        return promise;
     }
 
     searchMap(term) {

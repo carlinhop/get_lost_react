@@ -6,7 +6,7 @@ import React from 'react';
 import { Router, Route, Link, browserHistory } from 'react-router';
 import PlaceComponent from './PlaceComponent';
 
-let SideBar = function({places, city, selectFunction}){
+let SideBar = function({places, city, photo,selectFunction}){
 
     if (city == null || city.length === 0) {
         return <p>Loading...</p>;
@@ -33,7 +33,7 @@ let SideBar = function({places, city, selectFunction}){
         }
         return (
             <div className="sidebar">
-                <img src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fnickshell1983.files.wordpress.com%2F2011%2F06%2Fphuket-thailand.jpg&f=1"/>
+                <img src={photo}/>
                 <h1>{city.name}</h1>
                 <p>{city.country}</p>
                 <p>{city.currency[0]}</p>
