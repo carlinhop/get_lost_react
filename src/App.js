@@ -45,12 +45,12 @@ class App extends Component {
             })
 
         }).then(()=>{
-
+            // I have to fix this !!! Using setTimeout seems wrong
             setTimeout(()=>{
                 this.state.mapWrap.getGooglePlace(this.state.city).then((result)=>{
                     this.setState({photo: result});
                 });
-            }, 50);
+            }, 1000);
 
         });
     }
@@ -81,15 +81,17 @@ class App extends Component {
             this.state.mapWrap.map.setCenter({
                 lat: this.state.city.coordinates[0],
                 lng: this.state.city.coordinates[1]
-            })
-        });
+            });
 
-        // I have to fix this !!! Using setTimeout seems wrong
-        setTimeout(()=>{
             this.state.mapWrap.getGooglePlace(this.state.city).then((result)=>{
                 this.setState({photo: result});
+        });
+
+
+        setTimeout(()=>{
+            console.log(this.state.city);
             });
-        }, 1000);
+        }, 0);
 
 
 
