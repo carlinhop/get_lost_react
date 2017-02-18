@@ -170,13 +170,19 @@ class App extends Component {
         console.log(this.state.city);
     }
 
+    hideItinerary(){
+        let mapDom = document.querySelector(".map-container").style.display = "block";
+        let sidebarDom = document.querySelector(".sidebar").style.display = "block";
+        let itineraryDom = document.querySelector(".itinerary").style.display = "none";
+    }
+
 
     render() {
 
         return (
 
             <div className="App">
-                <HeaderComponent show={this.showItinerary.bind(this)}/>
+                <HeaderComponent show={this.showItinerary.bind(this)} hide={this.hideItinerary} />
                 <div className="main">
                     <div className="map-container">
                         <div id="map" className="map"></div>
