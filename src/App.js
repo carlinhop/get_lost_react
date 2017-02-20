@@ -167,7 +167,6 @@ class App extends Component {
         let sidebarDom = document.querySelector(".sidebar").style.display = "none";
         let itineraryDom = document.querySelector(".itinerary").style.display = "block";
 
-        // let itineraryDom = ;
         console.log(this.state.city);
     }
 
@@ -192,7 +191,7 @@ class App extends Component {
                         <form className="search" onSubmit={this.searchTerm.bind(this)}>
                             <input type="text"  placeholder="Search for something" />
                         </form>
-                        <button onClick={this.anotherCity.bind(this)} className="anotherCity">Another</button>
+                        <button onClick={this.anotherCity.bind(this)} className="anotherCity">Another City</button>
                         <button onClick={this.likeCity.bind(this)} className="likeCity">Like It</button>
                     </div>
                     <SideBar city={this.state.city} places={this.state.places} photo={this.state.photo}selectFunction={this.selectPlace.bind(this)}/>
