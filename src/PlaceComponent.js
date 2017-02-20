@@ -19,10 +19,11 @@ let PlaceComponent = function({place, selectFunction}){
 
     else {
         return (
-        <scroll-page  className="place"  id={place.place_id.toString()} onClick={selectFunction}>
+        <scroll-page  className="place"  id={place.place_id.toString()} >
             <div>
                 <h2>{place.name}</h2>
                 <h3>{place.rating}</h3>
+                <button className="save-to-itinerary" onClick={selectFunction} >Save</button>
             </div>
         </scroll-page>
         )

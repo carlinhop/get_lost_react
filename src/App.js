@@ -144,9 +144,10 @@ class App extends Component {
 
     selectPlace(event){
 
-         let selectedDom = event.currentTarget;
+         let selectedDom = event.currentTarget.parentNode.parentNode;
+
          let selected = this.state.places.find((place)=>{
-             return event.currentTarget.id === place.place_id;
+             return selectedDom.id === place.place_id;
          });
 
         this.setState((prevStatus)=>{
