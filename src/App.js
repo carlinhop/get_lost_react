@@ -103,7 +103,25 @@ class App extends Component {
 
 
         this.state.mapWrap.centerMap();
+        this.setState((prevState)=>{
+            if(!this.state.cities) {
+                let oldCity = prevState.city;
+                let cities = [this.state.city]
+                return {cities: cities}
+            }
+            else{
 
+                let cities = prevState.cities;
+                cities.push(this.state.city);
+
+                return {cities: cities}
+            }
+
+        },
+            ()=>{
+                console.log(this.state.cities);
+            }
+        );
 
 
         let search = document.querySelector(".search");
