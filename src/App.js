@@ -172,9 +172,11 @@ class App extends Component {
     }
 
     hideItinerary(){
-        let mapDom = document.querySelector(".map-container").style.display = "block";
-        let sidebarDom = document.querySelector(".sidebar").style.display = "block";
+        let mapDom = document.querySelector(".map-container").style.display = "flex";
+        let sidebarDom = document.querySelector(".sidebar").style.display = "flex";
         let itineraryDom = document.querySelector(".itinerary").style.display = "none";
+
+
     }
 
 
