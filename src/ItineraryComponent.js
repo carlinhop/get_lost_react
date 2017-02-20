@@ -17,8 +17,10 @@ let ItineraryComponent = function({city}){
 
         if(city.places.length>0) {
             let itineraryPlaces = [];
+            let key = 0;
             for(let place of city.places){
-                itineraryPlaces.push(<ItineraryPlace place={place}/>);
+                itineraryPlaces.push(<ItineraryPlace place={place} key={key}/>);
+                key++;
             }
             return (
                 <div className="itinerary">

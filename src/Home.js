@@ -9,7 +9,9 @@ import './App.css';
 let Home = function(){
   return (
          <div className="home container">
-             <button className="getlost-button"> <Link to="/app"> Get Lost</Link></button>
+             <button className="getlost-button" onClick={()=>{
+                 document.querySelector("#root").style.backgroundImage = "none";
+             }}> <Link to="/app"> Get Lost</Link></button>
          </div>
     )
 };
