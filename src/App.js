@@ -73,7 +73,7 @@ class App extends Component {
     anotherCity() {
 
         this.state.mapWrap.clearAllMarkers();
-
+        this.setState({selectedList: []});
 
         //Making the form disappear and clearing it
         let search = document.querySelector(".search");
@@ -213,7 +213,7 @@ class App extends Component {
                         <button onClick={this.likeCity.bind(this)} className="likeCity">Like It</button>
                     </div>
                     <SideBar city={this.state.city} places={this.state.places} photo={this.state.photo}selectFunction={this.selectPlace.bind(this)}/>
-                    <ItineraryComponent city={this.state.city} />
+                    <ItineraryComponent cities={this.state.cities} />
                 </div>
             </div>
         );

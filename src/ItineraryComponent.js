@@ -2,39 +2,37 @@
  * Created by carlospereira on 16/02/2017.
  */
 import React from 'react';
-import ItineraryPlace from './ItineraryPlaceComponent'
 
-let ItineraryComponent = function({city}){
+import ItineraryCity from './ItineraryCity';
+
+let ItineraryComponent = function({cities}){
 
 
 
-    if (city == null || city.length === 0) {
+    if (cities == null) {
         return <p className="itinerary">Loading...</p>;
     }
 
 
     else {
 
-        if(city.places.length>0) {
-            let itineraryPlaces = [];
-            let key = 0;
-            for(let place of city.places){
-                itineraryPlaces.push(<ItineraryPlace place={place} key={key}/>);
-                key++;
+        let citiesList=[];
+        let city;
+        for(city of cities) {
+            if(city.places) {
+                citiesList.push(<ItineraryCity city={city}/>);
             }
-            return (
-                <div className="itinerary">
-                    <h2>{city.name}</h2>
-                    {itineraryPlaces}
-                </div>
-
-            )
+            else {
+                return <p className="itinerary">nothing...</p>;
+            }
         }
 
-        else {
-            return <p className="itinerary">nothing...</p>;
-        }
+        return (
+            <div className="itinerary">
+                {citiesList}
+            </div>
 
+        )
     }
 
 }

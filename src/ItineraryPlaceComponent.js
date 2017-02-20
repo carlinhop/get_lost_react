@@ -16,6 +16,7 @@ let ItineraryPlaceComponent = function({place}){
     else {
         return (
                 <div className="itinerary-place">
+
                     <h3>{place.name}</h3>
                     <p>{place.types[0]}</p>
                     <p>{place.types[1]}</p>
