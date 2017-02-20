@@ -73,7 +73,7 @@ class App extends Component {
     anotherCity() {
 
         this.state.mapWrap.clearAllMarkers();
-        this.setState({selectedList: []});
+        this.setState({selectedList: [], places: null});
 
         //Making the form disappear and clearing it
         let search = document.querySelector(".search");
