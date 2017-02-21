@@ -136,9 +136,10 @@ class App extends Component {
 
             });
 
-            this.setState(()=>{
-                return {description: this.getCityDescription(this.state.city)}
-            })
+            this.getCityDescription(this.state.city).then((description)=>{
+                console.log(description);
+                this.setState({description: description});
+            });
 
 
         });
