@@ -27,6 +27,7 @@ class MapWrapper {
         for(let marker of this.markers){
             marker.setMap(null);
         }
+        this.markers =[];
     }
 
 
@@ -60,6 +61,12 @@ class MapWrapper {
     }
 
     searchMap(term) {
+        try{
+            this.clearAllMarkers();
+        }
+        catch(error){
+            console.log(error);
+        }
         let promise = new Promise((resolve, reject)=>{
             let request = {
                 location: this.newCoords,

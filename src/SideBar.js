@@ -6,7 +6,7 @@ import React from 'react';
 import { Router, Route, Link, browserHistory } from 'react-router';
 import PlaceComponent from './PlaceComponent';
 
-let SideBar = function({places, city, photo,selectFunction}){
+let SideBar = function({places, city, description, photo,selectFunction}){
 
     if (city == null || city.length === 0) {
         return <p>Loading...</p>;
@@ -37,6 +37,7 @@ let SideBar = function({places, city, photo,selectFunction}){
                 <h1>{city.name}</h1>
                 <p>{city.country}</p>
                 <p>{city.currency[0]}</p>
+                <p>{description}</p>
             </div>)
     }
 }

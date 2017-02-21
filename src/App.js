@@ -15,6 +15,10 @@ GoogleMapsLoader.LIBRARIES = ["geometry", "places"];
 GoogleMapsLoader.KEY = "AIzaSyCc3GjnrXBW2p637XJUP6wbPR8LoqXkaFo";
 
 
+import KGSearch from 'google-kgsearch'
+const kGraph = KGSearch("AIzaSyCvOKsuURV-TQBZgcvcBLYeGTTq1QZ2868");
+
+
 class App extends Component {
 
     constructor(props) {
@@ -54,6 +58,13 @@ class App extends Component {
                             this.state.mapWrap.getGooglePlace(this.state.city).then((result) => {
                                 this.setState({photo: result});
                             });
+                        }).then(()=>{
+
+                                this.getCityDescription(this.state.city).then((description)=>{
+                                    console.log(description);
+                                    this.setState({description: description});
+                                });
+
                         });
                     }
 
@@ -67,6 +78,33 @@ class App extends Component {
 
     componentWillUpdate() {
 
+
+    }
+
+    getCityDescription(city){
+
+        let params = {
+            query: city.name,
+            types: 'Place',
+            limit: 1
+        }
+
+        let promise = new Promise((resolve,reject)=>{
+
+
+
+            kGraph.search(params, (err, items) => {
+                if (err) console.error(err)
+                console.log(items[0].result.detailedDescription.articleBody);
+                resolve(items[0].result.detailedDescription.articleBody);
+
+            });
+
+
+
+        });
+
+        return promise;
 
     }
 
@@ -95,7 +133,14 @@ class App extends Component {
 
             this.state.mapWrap.getGooglePlace(this.state.city).then((result) => {
                 this.setState({photo: result});
+
             });
+
+            this.setState(()=>{
+                return {description: this.getCityDescription(this.state.city)}
+            })
+
+
         });
     }
 
@@ -212,7 +257,7 @@ class App extends Component {
                         <button onClick={this.anotherCity.bind(this)} className="anotherCity">Another City</button>
                         <button onClick={this.likeCity.bind(this)} className="likeCity">Like It</button>
                     </div>
-                    <SideBar city={this.state.city} places={this.state.places} photo={this.state.photo}selectFunction={this.selectPlace.bind(this)}/>
+                    <SideBar city={this.state.city} places={this.state.places} description={this.state.description} photo={this.state.photo}selectFunction={this.selectPlace.bind(this)}/>
                     <ItineraryComponent cities={this.state.cities} />
                 </div>
             </div>
