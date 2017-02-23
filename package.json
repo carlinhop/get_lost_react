@@ -21,5 +21,6 @@
     "build": "react-scripts build",
     "test": "mocha mocha --require babel-core/register ./src/tests",
     "eject": "react-scripts eject"
-  }
+  },
+  "proxy": "http://localhost:3001/"
 }

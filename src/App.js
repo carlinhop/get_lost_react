@@ -73,6 +73,10 @@ class App extends Component {
             })
         );
 
+        Tools.xmlHttp("/test", "GET").then((results)=>{
+            console.log(results);
+        });
+
 
     }
 
@@ -218,7 +222,12 @@ class App extends Component {
         this.setState((prevStatus)=>{
                 let oldList = prevStatus.selectedList;
                 let city = prevStatus.city;
-                oldList.push(selected);
+                if(!oldList.find((place)=>{
+                    return place.name === selected.name;
+                    })){
+                    oldList.push(selected);
+                }
+
                 city.places = oldList;
             return {city: city}
         }, ()=>{
