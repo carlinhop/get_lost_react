@@ -28,6 +28,6 @@ let PlaceComponent = function({place, selectFunction}){
         </scroll-page>
         )
     }
-}
+};
 
 export default PlaceComponent;

@@ -16,9 +16,9 @@ class Tools{
                  else {
                      reject(Error("problem"));
                  }
-             }
+             };
              request.send();
-         })
+         });
 
         return promise;
      }
@@ -30,14 +30,14 @@ class Tools{
 
 
      static getRandomCity(countries){
-         let randomNumber =  Tools.getRandomNumber(countries)
+         let randomNumber =  Tools.getRandomNumber(countries);
          let randomCityData = {
              name: countries[randomNumber].capital,
              coordinates: countries[randomNumber].latlng,
              language: countries[randomNumber].languages,
              country: countries[randomNumber].name,
              currency: countries[randomNumber].currencies
-         }
+         };
        return randomCityData;
      }
 }

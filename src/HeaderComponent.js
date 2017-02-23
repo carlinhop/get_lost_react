@@ -23,6 +23,6 @@ let HeaderComponent = function({show, hide}){
             </div>
         </div>
     )
-}
+};
 
 export default HeaderComponent;

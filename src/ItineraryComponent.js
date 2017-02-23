@@ -10,7 +10,7 @@ let ItineraryComponent = function({cities}){
 
 
     if (cities == null) {
-        return <p className="itinerary">Loading...</p>;
+        return <p className="itinerary">City was not choosen</p>;
     }
 
 
@@ -35,6 +35,6 @@ let ItineraryComponent = function({cities}){
         )
     }
 
-}
+};
 
 export default ItineraryComponent;

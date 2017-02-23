@@ -14,7 +14,7 @@ describe('city', function() {
         city1 = new City({name: "Caracas", coordinates: [10.50,-66.91],
         languages: ["ES"] ,country: "Venezuela", currency: ["BsF"]});
 
-    })
+    });
     it('should have a name', function(){
         assert.equal("Caracas", city1.name);
     });

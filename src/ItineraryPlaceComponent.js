@@ -8,7 +8,7 @@ let ItineraryPlaceComponent = function({place}){
 
 
 
-    if (place == null || place.length === 0) {
+    if (place === null || place.length === 0) {
         return <p className="itinerary-place">Loading...</p>;
     }
 
@@ -27,6 +27,6 @@ let ItineraryPlaceComponent = function({place}){
     }
 
 
-}
+};
 
 export default ItineraryPlaceComponent;

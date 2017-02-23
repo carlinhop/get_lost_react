@@ -77,13 +77,11 @@ class MapWrapper {
             let service = new this.google.maps.places.PlacesService(this.map);
 
             service.textSearch(request, (results, status) => {
+
                 if(status){
-
                     for(let place of results){
-
                         this.addMarkers(place);
                     }
-
                     resolve(results);
                 }
             });

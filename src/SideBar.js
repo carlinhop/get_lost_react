@@ -40,6 +40,6 @@ let SideBar = function({places, city, description, photo,selectFunction}){
                 <p>{description}</p>
             </div>)
     }
-}
+};
 
 export default SideBar;

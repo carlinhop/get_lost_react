@@ -85,23 +85,18 @@ class App extends Component {
 
         let params = {
             query: city.name,
-            types: 'Place',
+            types: 'City',
             limit: 1
-        }
+        };
 
         let promise = new Promise((resolve,reject)=>{
 
-
-
             kGraph.search(params, (err, items) => {
-                if (err) console.error(err)
-                console.log(items[0].result.detailedDescription.articleBody);
+
+                if(err) console.log(err);
                 resolve(items[0].result.detailedDescription.articleBody);
 
             });
-
-
-
         });
 
         return promise;
@@ -152,13 +147,19 @@ class App extends Component {
         this.setState((prevState)=>{
             if(!this.state.cities) {
                 let oldCity = prevState.city;
-                let cities = [this.state.city]
+                let cities = [this.state.city];
                 return {cities: cities}
             }
             else{
 
                 let cities = prevState.cities;
-                cities.push(this.state.city);
+                //Checking if there is a city with the same name
+                if(!cities.find((city)=>{
+                        return city.name === this.state.city.name;
+                    })){
+                    cities.push(this.state.city);
+                }
+
 
                 return {cities: cities}
             }
