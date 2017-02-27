@@ -1,6 +1,6 @@
 class Tools{
 
-     static xmlHttp(url, action){
+     static xmlHttp(url, action, data){
          //This is how you have to use xmlHttp:
          //Tools.xmlHttp("https://restcountries.eu/rest/v1/all")
          // .then((results)=>{console.log(results)},(error)=>{console.log(error)})
@@ -9,16 +9,29 @@ class Tools{
 
              let request = new XMLHttpRequest();
              request.open(action, url);
-             request.onload = function() {
-                 if (request.status === 200) {
-                     resolve(JSON.parse(request.response));
 
+             request.onload = function() {
+                 if(action ==="GET") {
+                     if (request.status === 200) {
+                         resolve(JSON.parse(request.response));
+
+                     }
+                     else {
+                         reject(Error("problem"));
+                     }
                  }
-                 else {
-                     reject(Error("problem"));
+                 else{
+                     resolve(request.response);
                  }
+
              };
-             request.send();
+             if(action === "POST"){
+                 request.setRequestHeader('content-type', 'application/json');
+                 request.send(JSON.stringify(data));
+             }
+             else{
+                 request.send();
+             }
          });
 
         return promise;

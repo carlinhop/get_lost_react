@@ -240,16 +240,17 @@ class App extends Component {
         let mapDom = document.querySelector(".map-container").style.display = "none";
         let sidebarDom = document.querySelector(".sidebar").style.display = "none";
         let itineraryDom = document.querySelector(".itinerary").style.display = "block";
-
-        console.log(this.state.city);
+        if(this.state.cities[0].places.length > 0){
+            Tools.xmlHttp("/test", "POST", {itinerary: this.state.cities}).then((results)=>{
+                console.log(results);
+            });
+        }
     }
 
     hideItinerary(){
         let mapDom = document.querySelector(".map-container").style.display = "flex";
         let sidebarDom = document.querySelector(".sidebar").style.display = "block";
         let itineraryDom = document.querySelector(".itinerary").style.display = "none";
-
-
     }
 
 

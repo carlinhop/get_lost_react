@@ -24,7 +24,10 @@ let ItineraryCity = function({city}) {
 
     else{
         return (<div>
-                <h1>No place was choosen</h1>
+                <h1>{city.name}</h1>
+                <h3>No place was choosen</h3>
+                <button>Delete city</button>
+                <button>Add places</button>
 
             </div>
         );
