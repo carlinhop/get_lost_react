@@ -5,6 +5,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import {Link} from 'react-router';
+import SignOut from './SignOutComponent';
 
 
 
@@ -26,7 +27,7 @@ let HeaderComponent = function({show, hide}){
                 <button className="register"><Link to="/register">Register</Link></button>
                 <button className="sign-in"><Link to="/sign-in">Sign In</Link></button>
                 <button className="back-to-map-button" onClick={hide}>Back to map</button>
-                <button className="sign-out"><Link to="/sign-out">Sign out</Link></button>
+                <button className="sign-out" onClick={SignOut}>Sign out</button>
             </div>
         </div>
     )

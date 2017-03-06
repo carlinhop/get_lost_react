@@ -23,7 +23,7 @@ let Register = function(){
                 console.log(result);
 
                 browserHistory.push("/sign-in");
-                
+
             },
 
             (errors)=>{

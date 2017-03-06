@@ -17,11 +17,15 @@ class Tools{
 
                      }
                      else {
-                         reject(Error("problem"));
+                         reject(Error("problem in promise"));
                      }
                  }
-                 else{
+                 else if(action === "POST" && request.status === 200){
                      resolve(request.response);
+
+                 }
+                 else{
+                     console.log(request.response);
                  }
 
              };
