@@ -9,30 +9,31 @@ let ItineraryComponent = function({cities}){
 
 
 
-    if (cities == null) {
+    if (!cities) {
         return <p className="itinerary">City was not choosen</p>;
     }
 
 
     else {
+        if (cities.length > 0) {
+            let citiesList = [];
+            let city;
+            for (city of cities) {
+                if (city.places) {
+                    citiesList.push(<ItineraryCity city={city}/>);
+                }
+                else {
+                    return <p className="itinerary">nothing...</p>;
+                }
+            }
 
-        let citiesList=[];
-        let city;
-        for(city of cities) {
-            if(city.places) {
-                citiesList.push(<ItineraryCity city={city}/>);
-            }
-            else {
-                return <p className="itinerary">nothing...</p>;
-            }
+            return (
+                <div className="itinerary">
+                    {citiesList}
+                </div>
+
+            )
         }
-
-        return (
-            <div className="itinerary">
-                {citiesList}
-            </div>
-
-        )
     }
 
 };

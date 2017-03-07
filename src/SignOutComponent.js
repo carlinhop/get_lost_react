@@ -11,7 +11,7 @@ let SignOut = function(){
             (result)=>{
 
                 console.log(result);
-                browserHistory.push("/register");
+                browserHistory.push("/sign-in");
 
             },
 

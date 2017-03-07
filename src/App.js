@@ -29,8 +29,7 @@ class App extends Component {
 
     componentDidMount() {
 
-
-        GoogleMapsLoader.load(((google) => {
+                GoogleMapsLoader.load(((google) => {
                 this.setState({google: google}, ()=> {
 
                         let mapWrap;
@@ -65,19 +64,19 @@ class App extends Component {
                                     this.setState({description: description});
                                 });
 
+                            });
                         });
-                    }
 
+                    })
                 );
-
-            })
-        );
-
+                
         Tools.xmlHttp("/test", "GET").then((results)=>{
-            console.log(results);
-        });
-
-
+                console.log(results);
+                return this.setState({cities: results.cities});
+            }
+            ,(error)=>{
+                console.log(error);
+            });
     }
 
     componentWillUpdate() {
@@ -237,6 +236,7 @@ class App extends Component {
     }
 
     showItinerary(){
+
         let mapDom = document.querySelector(".map-container").style.display = "none";
         let sidebarDom = document.querySelector(".sidebar").style.display = "none";
         let itineraryDom = document.querySelector(".itinerary").style.display = "block";
@@ -251,10 +251,12 @@ class App extends Component {
 
 
     postItinerary(){
-        if(this.state.cities[0].places.length > 0){
-            Tools.xmlHttp("/test", "POST", {itinerary: this.state.cities}).then((results)=>{
-                console.log(results);
-            });
+        if(this.state.cities) {
+            if (this.state.cities[0].places.length > 0) {
+                Tools.xmlHttp("/test", "POST", {itinerary: this.state.cities}).then((results) => {
+                    //console.log(results);
+                });
+            }
         }
     }
 
