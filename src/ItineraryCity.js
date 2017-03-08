@@ -17,6 +17,8 @@ let ItineraryCity = function({city}) {
 
         return (<div>
                 <h1>{city.name}</h1>
+                <button>Delete city</button>
+                <button>Add places</button>
                 {itineraryPlaces}
             </div>
         );
