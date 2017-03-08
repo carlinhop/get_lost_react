@@ -260,6 +260,24 @@ class App extends Component {
         }
     }
 
+    deleteCityFromItinerary(cityName){
+        let targetIndex;
+
+        let target = this.state.cities.filter((city)=>{
+            if(city.name === cityName){
+                targetIndex = this.state.cities.indexOf(city);
+                return true;
+            }
+        });
+
+        this.setState((prevState)=>{
+            prevState.cities.splice(targetIndex, 1);
+            return {cities: prevState.cities};
+        });
+
+
+    }
+
 
 
     render() {
@@ -278,7 +296,7 @@ class App extends Component {
                         <button onClick={this.likeCity.bind(this)} className="likeCity">Like It</button>
                     </div>
                     <SideBar city={this.state.city} places={this.state.places} description={this.state.description} photo={this.state.photo}selectFunction={this.selectPlace.bind(this)}/>
-                    <ItineraryComponent cities={this.state.cities} />
+                    <ItineraryComponent cities={this.state.cities} deleteCity={this.deleteCityFromItinerary.bind(this)} />
                 </div>
             </div>
         );

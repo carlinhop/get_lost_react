@@ -5,7 +5,7 @@ import React from 'react';
 import ItineraryPlace from './ItineraryPlaceComponent'
 
 
-let ItineraryCity = function({city}) {
+let ItineraryCity = function({city, deleteCity}) {
     let itineraryPlaces = [];
     if (city.places.length > 0) {
         let key = 0;
@@ -17,7 +17,9 @@ let ItineraryCity = function({city}) {
 
         return (<div>
                 <h1>{city.name}</h1>
-                <button>Delete city</button>
+                <button onClick={()=>{
+                    deleteCity(city.name);
+                }}>Delete city</button>
                 <button>Add places</button>
                 {itineraryPlaces}
             </div>
@@ -28,7 +30,9 @@ let ItineraryCity = function({city}) {
         return (<div>
                 <h1>{city.name}</h1>
                 <h3>No place was choosen</h3>
-                <button>Delete city</button>
+                <button onClick={()=>{
+                    deleteCity(city.name);
+                }}>Delete city</button>
                 <button>Add places</button>
 
             </div>

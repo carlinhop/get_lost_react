@@ -5,7 +5,7 @@ import React from 'react';
 
 import ItineraryCity from './ItineraryCity';
 
-let ItineraryComponent = function({cities}){
+let ItineraryComponent = function({cities, deleteCity}){
 
 
 
@@ -20,7 +20,7 @@ let ItineraryComponent = function({cities}){
             let city;
             for (city of cities) {
                 if (city.places) {
-                    citiesList.push(<ItineraryCity city={city}/>);
+                    citiesList.push(<ItineraryCity city={city} deleteCity={deleteCity}/>);
                 }
                 else {
                     return <p className="itinerary">nothing...</p>;
