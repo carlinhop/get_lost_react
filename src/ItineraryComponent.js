@@ -9,7 +9,7 @@ let ItineraryComponent = function({cities, deleteCity}){
 
 
 
-    if (!cities) {
+    if (!cities || cities.length === 0) {
         return <p className="itinerary">City was not choosen</p>;
     }
 

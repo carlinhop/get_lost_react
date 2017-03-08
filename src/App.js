@@ -24,7 +24,7 @@ class App extends Component {
     constructor(props) {
 
         super(props);
-        this.state = {results: null, selectedList: []};
+        this.state = {results: null, selectedList: [], cities:[]};
     }
 
     componentDidMount() {
@@ -251,7 +251,7 @@ class App extends Component {
 
 
     postItinerary(){
-        if(this.state.cities) {
+        if(this.state.cities.length > 0) {
             if (this.state.cities[0].places.length > 0) {
                 Tools.xmlHttp("/test", "POST", {itinerary: this.state.cities}).then((results) => {
                     //console.log(results);
@@ -273,7 +273,11 @@ class App extends Component {
         this.setState((prevState)=>{
             prevState.cities.splice(targetIndex, 1);
             return {cities: prevState.cities};
+        }, ()=>{
+            this.postItinerary();
         });
+
+
 
 
     }
