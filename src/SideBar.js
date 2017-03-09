@@ -14,15 +14,13 @@ let SideBar = function({places, city, description, photo,selectFunction}){
 
 
     else {
-        if(places){
+        if(places && places.length>0){
 
             let placesDom = [];
-            let i = 0;
-
             for (let place of places){
                 let placedom = <PlaceComponent place={place} key={places.indexOf(place)} selectFunction={selectFunction}> </PlaceComponent>;
                 placesDom.push(placedom);
-                i++;
+
             }
 
             return (

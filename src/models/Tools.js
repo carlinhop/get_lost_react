@@ -17,7 +17,7 @@ class Tools{
 
                      }
                      else {
-                         reject(Error("problem in promise"));
+                         reject(request.response);
                      }
                  }
                  else if(action === "POST" && request.status === 200){

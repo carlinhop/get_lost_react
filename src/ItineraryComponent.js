@@ -18,9 +18,11 @@ let ItineraryComponent = function({cities, deleteCity}){
         if (cities.length > 0) {
             let citiesList = [];
             let city;
+            let index = 0;
             for (city of cities) {
                 if (city.places) {
-                    citiesList.push(<ItineraryCity city={city} deleteCity={deleteCity}/>);
+                    citiesList.push(<ItineraryCity city={city} deleteCity={deleteCity} key={index}/>);
+                    index++;
                 }
                 else {
                     return <p className="itinerary">nothing...</p>;
