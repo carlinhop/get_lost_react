@@ -4,7 +4,7 @@
 
 import React from 'react';
 
-let ItineraryPlaceComponent = function({place}){
+let ItineraryPlaceComponent = function({city, place, deletePlace}){
 
 
 
@@ -21,7 +21,9 @@ let ItineraryPlaceComponent = function({place}){
                     <p>{place.types[0]}</p>
                     <p>{place.types[1]}</p>
 
-                    <button className="delete-from-itinerary">Delete place</button>
+                    <button onClick={()=>{
+                        deletePlace(city.name, place.name);
+                    }} className="delete-from-itinerary">Delete place</button>
                 </div>
         )
     }

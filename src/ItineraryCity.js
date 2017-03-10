@@ -5,13 +5,13 @@ import React from 'react';
 import ItineraryPlace from './ItineraryPlaceComponent'
 
 
-let ItineraryCity = function({city, deleteCity}) {
+let ItineraryCity = function({city, deleteCity, deletePlace}) {
     let itineraryPlaces = [];
     if (city.places.length > 0) {
         let key = 0;
 
         for (let place of city.places) {
-            itineraryPlaces.push(<ItineraryPlace city={city} place={place} key={key}/>);
+            itineraryPlaces.push(<ItineraryPlace city={city} place={place} deletePlace={deletePlace} key={key}/>);
             key++;
         }
 

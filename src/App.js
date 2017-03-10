@@ -261,6 +261,7 @@ class App extends Component {
     }
 
     deleteCityFromItinerary(cityName){
+        //make this its own function like: getCity
         let targetIndex;
 
         let target = this.state.cities.filter((city)=>{
@@ -272,6 +273,34 @@ class App extends Component {
 
         this.setState((prevState)=>{
             prevState.cities.splice(targetIndex, 1);
+            return {cities: prevState.cities};
+        }, ()=>{
+            this.postItinerary();
+        });
+    }
+
+    deletePlaceFromItinerary(cityName, placeName){
+
+        //make this its own function like: getCity
+        let targetIndex;
+        let targetPlaceIndex;
+
+        let target = this.state.cities.filter((city)=>{
+            if(city.name === cityName){
+                targetIndex = this.state.cities.indexOf(city);
+                return true;
+            }
+        });
+
+        let targetPlace = target.filter((place)=>{
+            if(place.name === placeName){
+                targetPlaceIndex = target.indexOf(place);
+                return true;
+            }
+        });
+
+        this.setState((prevState)=>{
+            prevState.cities[targetIndex].places.splice(targetPlaceIndex, 1);
             return {cities: prevState.cities};
         }, ()=>{
             this.postItinerary();
@@ -300,7 +329,7 @@ class App extends Component {
                         <button onClick={this.likeCity.bind(this)} className="likeCity">Like It</button>
                     </div>
                     <SideBar city={this.state.city} places={this.state.places} description={this.state.description} photo={this.state.photo}selectFunction={this.selectPlace.bind(this)}/>
-                    <ItineraryComponent cities={this.state.cities} deleteCity={this.deleteCityFromItinerary.bind(this)} />
+                    <ItineraryComponent cities={this.state.cities} deleteCity={this.deleteCityFromItinerary.bind(this)} deletePlace={this.deletePlaceFromItinerary.bind(this)} />
                 </div>
             </div>
         );
