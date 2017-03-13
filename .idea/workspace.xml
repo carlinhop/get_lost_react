@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46bc9013-64ae-49c9-99be-9e2fea32752a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,8 +23,8 @@
       <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4198">
-              <caret line="43" column="106" lean-forward="false" selection-start-line="43" selection-start-column="106" selection-end-line="43" selection-end-column="106" />
+            <state relative-caret-position="437">
+              <caret line="309" column="53" lean-forward="false" selection-start-line="309" selection-start-column="53" selection-end-line="309" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -110,7 +110,7 @@
         <entry file="file://$PROJECT_DIR$/src/models/Tools.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="675">
-              <caret line="80" column="1" lean-forward="true" selection-start-line="80" selection-start-column="1" selection-end-line="80" selection-end-column="1" />
+              <caret line="80" column="1" lean-forward="false" selection-start-line="80" selection-start-column="1" selection-end-line="80" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -120,7 +120,7 @@
         <entry file="file://$PROJECT_DIR$/src/ItineraryCity.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
-              <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+              <caret line="31" column="5" lean-forward="false" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -173,8 +173,8 @@
         <option value="$PROJECT_DIR$/src/ItineraryPlaceComponent.js" />
         <option value="$PROJECT_DIR$/src/SideBar.js" />
         <option value="$PROJECT_DIR$/src/ItineraryCity.js" />
-        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/models/Tools.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
       </list>
     </option>
   </component>
@@ -402,12 +402,12 @@
       <workItem from="1488807811080" duration="1400000" />
       <workItem from="1488882104178" duration="6728000" />
       <workItem from="1489052725481" duration="6238000" />
-      <workItem from="1489402306842" duration="2763000" />
+      <workItem from="1489402306842" duration="4560000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178568000" />
+    <option name="totallyTimeSpent" value="180365000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="242" y="118" width="1260" height="729" extended-state="0" />
@@ -809,7 +809,7 @@
     <entry file="file://$PROJECT_DIR$/src/ItineraryCity.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
-          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+          <caret line="31" column="5" lean-forward="false" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -835,15 +835,15 @@
     <entry file="file://$PROJECT_DIR$/src/models/Tools.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
-          <caret line="80" column="1" lean-forward="true" selection-start-line="80" selection-start-column="1" selection-end-line="80" selection-end-column="1" />
+          <caret line="80" column="1" lean-forward="false" selection-start-line="80" selection-start-column="1" selection-end-line="80" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4198">
-          <caret line="43" column="106" lean-forward="false" selection-start-line="43" selection-start-column="106" selection-end-line="43" selection-end-column="106" />
+        <state relative-caret-position="437">
+          <caret line="309" column="53" lean-forward="false" selection-start-line="309" selection-start-column="53" selection-end-line="309" selection-end-column="53" />
           <folding />
         </state>
       </provider>

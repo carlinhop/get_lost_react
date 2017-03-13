@@ -177,7 +177,7 @@ class App extends Component {
 
         },
             ()=>{
-                console.log(this.state.cities);
+
             }
         );
 
@@ -238,7 +238,7 @@ class App extends Component {
                 city.places = oldList;
             return {city: city}
         }, ()=>{
-            console.log(this.state.city.places);
+
         });
         selectedDom.style.backgroundColor = "grey"
     }
@@ -303,10 +303,11 @@ class App extends Component {
 
         let targetPlace = target.filter((place)=>{
             if(place.name === placeName){
-                targetPlaceIndex = target.indexOf(place);
                 return true;
             }
         });
+
+        targetPlaceIndex = target.indexOf(targetPlace);
 
         this.setState((prevState)=>{
             prevState.cities[targetIndex].places.splice(targetPlaceIndex, 1);
