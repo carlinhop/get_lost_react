@@ -5,7 +5,7 @@ import React from 'react';
 
 import ItineraryCity from './ItineraryCity';
 
-let ItineraryComponent = function({cities, deleteCity, deletePlace}){
+let ItineraryComponent = function({cities, deleteCity, deletePlace, addPlace}){
 
 
 
@@ -21,7 +21,11 @@ let ItineraryComponent = function({cities, deleteCity, deletePlace}){
             let index = 0;
             for (city of cities) {
                 if (city.places) {
-                    citiesList.push(<ItineraryCity city={city} deleteCity={deleteCity} deletePlace={deletePlace} key={index}/>);
+                    citiesList.push(<ItineraryCity city={city}
+                                                   deleteCity={deleteCity}
+                                                   deletePlace={deletePlace}
+                                                   addPlace={addPlace}
+                                                   key={index}/>);
                     index++;
                 }
                 else {

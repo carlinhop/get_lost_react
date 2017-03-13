@@ -34,7 +34,7 @@ let SideBar = function({places, city, description, photo,selectFunction}){
                 <img src={photo}/>
                 <h1>{city.name}</h1>
                 <p>{city.country}</p>
-                <p>{city.currency[0]}</p>
+                {/*<p>{city.currency[0]}</p>*/}
                 <p>{description}</p>
             </div>)
     }

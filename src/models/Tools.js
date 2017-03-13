@@ -58,5 +58,25 @@ class Tools{
          };
        return randomCityData;
      }
+
+    static getCity(countries, cityName){
+        let country = countries.find((country)=>{
+            return country.capital === cityName;
+        });
+
+        let countryIndex = countries.indexOf(country);
+
+        console.log(country);
+
+        let cityData = {
+            name: countries[countryIndex].capital,
+            coordinates: countries[countryIndex].latlng,
+            language: countries[countryIndex].languages,
+            country: countries[countryIndex].name,
+            currency: countries[countryIndex].currencies
+        };
+        return cityData;
+    }
+
 }
 export default Tools;

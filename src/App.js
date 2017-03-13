@@ -27,7 +27,7 @@ class App extends Component {
         this.state = {results: null, selectedList: [], cities:[]};
     }
 
-    componentDidMount() {
+    componentDidMount(cityName) {
 
                 GoogleMapsLoader.load(((google) => {
                 this.setState({google: google}, ()=> {
@@ -39,7 +39,15 @@ class App extends Component {
                                 this.setState({countries: results});
 
                             }).then(() => {
-                            this.setState({city: new City(Tools.getRandomCity(this.state.countries))});
+                            if(cityName){
+
+                                this.setState({city: new City(Tools.getCity(this.state.countries, cityName))});
+
+                            }
+                            else{
+                                this.setState({city: new City(Tools.getRandomCity(this.state.countries))});
+                            }
+
 
                         }).then(() => {
 
@@ -71,7 +79,7 @@ class App extends Component {
                 );
                 
         Tools.xmlHttp("/test", "GET").then((results)=>{
-                console.log(results);
+
                 return this.setState({cities: results.cities});
             }
             ,(error)=>{
@@ -260,6 +268,7 @@ class App extends Component {
         }
     }
 
+
     deleteCityFromItinerary(cityName){
         //make this its own function like: getCity
         let targetIndex;
@@ -305,12 +314,16 @@ class App extends Component {
         }, ()=>{
             this.postItinerary();
         });
+    }
 
+    addNewPlaceToCity(cityName) {
 
+        console.log("probando: " + cityName);
+        this.hideItinerary();
+        this.componentDidMount(cityName);
 
 
     }
-
 
 
     render() {
@@ -328,8 +341,15 @@ class App extends Component {
                         <button onClick={this.anotherCity.bind(this)} className="anotherCity">Another City</button>
                         <button onClick={this.likeCity.bind(this)} className="likeCity">Like It</button>
                     </div>
-                    <SideBar city={this.state.city} places={this.state.places} description={this.state.description} photo={this.state.photo}selectFunction={this.selectPlace.bind(this)}/>
-                    <ItineraryComponent cities={this.state.cities} deleteCity={this.deleteCityFromItinerary.bind(this)} deletePlace={this.deletePlaceFromItinerary.bind(this)} />
+                    <SideBar city={this.state.city}
+                             places={this.state.places}
+                             description={this.state.description}
+                             photo={this.state.photo}
+                             selectFunction={this.selectPlace.bind(this)}/>
+                    <ItineraryComponent cities={this.state.cities}
+                                        deleteCity={this.deleteCityFromItinerary.bind(this)}
+                                        deletePlace={this.deletePlaceFromItinerary.bind(this)}
+                                        addPlace={this.addNewPlaceToCity.bind(this)} />
                 </div>
             </div>
         );

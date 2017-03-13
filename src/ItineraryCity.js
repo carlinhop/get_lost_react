@@ -5,13 +5,16 @@ import React from 'react';
 import ItineraryPlace from './ItineraryPlaceComponent'
 
 
-let ItineraryCity = function({city, deleteCity, deletePlace}) {
+let ItineraryCity = function({city, deleteCity, deletePlace, addPlace}) {
     let itineraryPlaces = [];
     if (city.places.length > 0) {
         let key = 0;
 
         for (let place of city.places) {
-            itineraryPlaces.push(<ItineraryPlace city={city} place={place} deletePlace={deletePlace} key={key}/>);
+            itineraryPlaces.push(<ItineraryPlace city={city}
+                                                 place={place}
+                                                 deletePlace={deletePlace}
+                                                 key={key}/>);
             key++;
         }
 
@@ -20,7 +23,9 @@ let ItineraryCity = function({city, deleteCity, deletePlace}) {
                 <button onClick={()=>{
                     deleteCity(city.name);
                 }}>Delete city</button>
-                <button>Add places</button>
+                <button onClick={()=>{
+                    addPlace(city.name);
+                }}>Add places</button>
                 {itineraryPlaces}
             </div>
         );
@@ -33,7 +38,9 @@ let ItineraryCity = function({city, deleteCity, deletePlace}) {
                 <button onClick={()=>{
                     deleteCity(city.name);
                 }}>Delete city</button>
-                <button>Add places</button>
+                <button onClick={()=>{
+                    addPlace(city.name);
+                }}>Add places</button>
 
             </div>
         );
