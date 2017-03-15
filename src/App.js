@@ -77,7 +77,7 @@ class App extends Component {
 
                     })
                 );
-                
+
         Tools.xmlHttp("/test", "GET").then((results)=>{
 
                 return this.setState({cities: results.cities});
@@ -252,20 +252,21 @@ class App extends Component {
     }
 
     hideItinerary(){
+        this.setState({places: null});
         let mapDom = document.querySelector(".map-container").style.display = "flex";
         let sidebarDom = document.querySelector(".sidebar").style.display = "block";
         let itineraryDom = document.querySelector(".itinerary").style.display = "none";
     }
 
 
-    postItinerary(){
-        if(this.state.cities.length > 0) {
-            if (this.state.cities[0].places.length > 0) {
-                Tools.xmlHttp("/test", "POST", {itinerary: this.state.cities}).then((results) => {
-                    //console.log(results);
-                });
-            }
-        }
+    postItinerary() {
+
+
+        Tools.xmlHttp("/test", "POST", {itinerary: this.state.cities}).then((results) => {
+            //console.log(results);
+        });
+
+
     }
 
 
@@ -332,7 +333,7 @@ class App extends Component {
         return (
 
             <div className="App">
-                <HeaderComponent show={this.showItinerary.bind(this)} hide={this.hideItinerary} />
+                <HeaderComponent show={this.showItinerary.bind(this)} hide={this.hideItinerary.bind(this)} />
                 <div className="main">
                     <div className="map-container">
                         <div id="map" className="map"></div>
