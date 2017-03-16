@@ -24,14 +24,14 @@ class MapWrapper {
     }
 
     clearAllMarkers() {
-        for(let marker of this.markers){
+        for (let marker of this.markers) {
             marker.setMap(null);
         }
-        this.markers =[];
+        this.markers = [];
     }
 
 
-    getGooglePlace(city){
+    getGooglePlace(city) {
 
         let request = {
             location: new this.google.maps.LatLng(city.coordinates[0], city.coordinates[1]),
@@ -41,7 +41,7 @@ class MapWrapper {
 
         let service = new this.google.maps.places.PlacesService(this.map);
 
-        let promise = new Promise((resolve, reject)=>{
+        let promise = new Promise((resolve, reject) => {
 
             service.textSearch(request, (results, status) => {
                 this.newCoords = results[0].geometry.location;
@@ -61,13 +61,13 @@ class MapWrapper {
     }
 
     searchMap(term) {
-        try{
+        try {
             this.clearAllMarkers();
         }
-        catch(error){
+        catch (error) {
             console.log(error);
         }
-        let promise = new Promise((resolve, reject)=>{
+        let promise = new Promise((resolve, reject) => {
             let request = {
                 location: this.newCoords,
                 radius: "1000",
@@ -78,8 +78,8 @@ class MapWrapper {
 
             service.textSearch(request, (results, status) => {
 
-                if(status){
-                    for(let place of results){
+                if (status) {
+                    for (let place of results) {
                         this.addMarkers(place);
                     }
                     resolve(results);
@@ -90,7 +90,7 @@ class MapWrapper {
         return promise;
     }
 
-    addMarkers(place){
+    addMarkers(place) {
         let marker = new this.google.maps.Marker({
             position: {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()},
             map: this.map,
@@ -100,13 +100,12 @@ class MapWrapper {
         this.markers.push(marker);
 
 
-
         let infowindow = new this.google.maps.InfoWindow({content: place.name});
-        marker.addListener('mouseover', function() {
+        marker.addListener('mouseover', function () {
             infowindow.open(this.map, marker);
         });
 
-        marker.addListener('mouseout',function(){
+        marker.addListener('mouseout', function () {
             infowindow.close();
         });
 

@@ -2,10 +2,10 @@
  * Created by user on 22/01/2017.
  */
 
-class City{
+class City {
 
 
-    constructor(cityObj){
+    constructor(cityObj) {
         //cityObj is a data object coming from an API
         this.name = cityObj.name;
         this.coordinates = cityObj.coordinates;
@@ -15,8 +15,8 @@ class City{
         this.places = [];
     }
 
-    selectPlace(placeName){
-        this.places.select((place)=>{
+    selectPlace(placeName) {
+        this.places.select((place) => {
             return place.name === placeName;
         });
     }

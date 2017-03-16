@@ -5,8 +5,7 @@ import React from 'react';
 
 import ItineraryCity from './ItineraryCity';
 
-let ItineraryComponent = function({cities, deleteCity, deletePlace, addPlace}){
-
+let ItineraryComponent = function ({cities, deleteCity, deletePlace, addPlace}) {
 
 
     if (!cities || cities.length === 0) {

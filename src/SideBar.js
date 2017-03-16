@@ -3,10 +3,10 @@
  */
 
 import React from 'react';
-import { Router, Route, Link, browserHistory } from 'react-router';
+import {Router, Route, Link, browserHistory} from 'react-router';
 import PlaceComponent from './PlaceComponent';
 
-let SideBar = function({places, city, description, photo,selectFunction}){
+let SideBar = function ({places, city, description, photo, selectFunction}) {
 
     if (city == null || city.length === 0) {
         return <p>Loading...</p>;
@@ -14,11 +14,12 @@ let SideBar = function({places, city, description, photo,selectFunction}){
 
 
     else {
-        if(places && places.length>0){
+        if (places && places.length > 0) {
 
             let placesDom = [];
-            for (let place of places){
-                let placedom = <PlaceComponent place={place} key={places.indexOf(place)} selectFunction={selectFunction}> </PlaceComponent>;
+            for (let place of places) {
+                let placedom = <PlaceComponent place={place} key={places.indexOf(place)}
+                                               selectFunction={selectFunction}> </PlaceComponent>;
                 placesDom.push(placedom);
 
             }

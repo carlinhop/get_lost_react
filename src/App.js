@@ -24,75 +24,71 @@ class App extends Component {
     constructor(props) {
 
         super(props);
-        this.state = {results: null, selectedList: [], cities:[]};
+        this.state = {results: null, selectedList: [], cities: []};
     }
 
     componentDidMount(cityName) {
 
-                GoogleMapsLoader.load(((google) => {
-                this.setState({google: google}, ()=> {
+        GoogleMapsLoader.load(((google) => {
+                this.setState({google: google}, () => {
 
-                        let mapWrap;
+                    let mapWrap;
 
-                        Tools.xmlHttp("https://restcountries.eu/rest/v1/all", "GET")
-                            .then((results) => {
-                                this.setState({countries: results});
-
-                            }).then(() => {
-                            if(cityName){
-
-                                this.setState({city: new City(Tools.getCity(this.state.countries, cityName))});
-
-                            }
-                            else{
-                                this.setState({city: new City(Tools.getRandomCity(this.state.countries))});
-                            }
-
+                    Tools.xmlHttp("https://restcountries.eu/rest/v1/all", "GET")
+                        .then((results) => {
+                            this.setState({countries: results});
 
                         }).then(() => {
+                        if (cityName) {
 
-                            let mapHTML = document.getElementById("map");
-                            this.setState({
-                                mapWrap: new MapWrapper(mapHTML, {
-                                    zoom: 4, center: {
-                                        lat: this.state.city.coordinates[0],
-                                        lng: this.state.city.coordinates[1]
-                                    }, disableDefaultUI: true
-                                }, this.state.google)
-                            })
+                            this.setState({city: new City(Tools.getCity(this.state.countries, cityName))});
 
-                        }).then(() => {
-                            this.state.mapWrap.getGooglePlace(this.state.city).then((result) => {
-                                this.setState({photo: result});
-                            });
-                        }).then(()=>{
+                        }
+                        else {
+                            this.setState({city: new City(Tools.getRandomCity(this.state.countries))});
+                        }
 
-                                this.getCityDescription(this.state.city).then((description)=>{
-                                    console.log(description);
-                                    this.setState({description: description});
-                                });
 
-                            });
+                    }).then(() => {
+
+                        let mapHTML = document.getElementById("map");
+                        this.setState({
+                            mapWrap: new MapWrapper(mapHTML, {
+                                zoom: 4, center: {
+                                    lat: this.state.city.coordinates[0],
+                                    lng: this.state.city.coordinates[1]
+                                }, disableDefaultUI: true
+                            }, this.state.google)
+                        })
+
+                    }).then(() => {
+                        this.state.mapWrap.getGooglePlace(this.state.city).then((result) => {
+                            this.setState({photo: result});
+                        });
+                    }).then(() => {
+
+                        this.getCityDescription(this.state.city).then((description) => {
+                            console.log(description);
+                            this.setState({description: description});
                         });
 
-                    })
-                );
+                    });
+                });
 
-        Tools.xmlHttp("/test", "GET").then((results)=>{
+            })
+        );
+
+        Tools.xmlHttp("/test", "GET").then((results) => {
 
                 return this.setState({cities: results.cities});
             }
-            ,(error)=>{
+            , (error) => {
                 console.log(error);
             });
     }
 
-    componentWillUpdate() {
 
-
-    }
-
-    getCityDescription(city){
+    getCityDescription(city) {
 
         let params = {
             query: city.name,
@@ -100,11 +96,11 @@ class App extends Component {
             limit: 1
         };
 
-        let promise = new Promise((resolve,reject)=>{
+        let promise = new Promise((resolve, reject) => {
 
             kGraph.search(params, (err, items) => {
 
-                if(err) console.log(err);
+                if (err) console.log(err);
                 resolve(items[0].result.detailedDescription.articleBody);
 
             });
@@ -142,7 +138,7 @@ class App extends Component {
 
             });
 
-            this.getCityDescription(this.state.city).then((description)=>{
+            this.getCityDescription(this.state.city).then((description) => {
                 console.log(description);
                 this.setState({description: description});
             });
@@ -151,32 +147,37 @@ class App extends Component {
         });
     }
 
-    likeCity(){
+    likeCity() {
 
 
         this.state.mapWrap.centerMap();
-        this.setState((prevState)=>{
-            if(!this.state.cities) {
-                let oldCity = prevState.city;
-                let cities = [this.state.city];
-                return {cities: cities}
-            }
-            else{
+        this.setState((prevState) => {
+                if (!this.state.cities) {
+                    let oldCity = prevState.city;
+                    let cities = [this.state.city];
+                    return {cities: cities}
+                }
+                else {
 
-                let cities = prevState.cities;
-                //Checking if there is a city with the same name
-                if(!cities.find((city)=>{
+                    let cities = prevState.cities;
+                    //Checking if there is a city with the same name
+                    let savedCity = cities.find((city) => {
                         return city.name === this.state.city.name;
-                    })){
-                    cities.push(this.state.city);
+                    });
+                    console.log(savedCity);
+                    if (!savedCity) {
+                        cities.push(this.state.city);
+                    }
+                    else {
+                        this.setState({city: savedCity});
+                    }
+
+
+                    return {cities: cities}
                 }
 
-
-                return {cities: cities}
-            }
-
-        },
-            ()=>{
+            },
+            () => {
 
             }
         );
@@ -190,19 +191,19 @@ class App extends Component {
 
     searchTerm(event) {
 
-        try{
+        try {
             // //Clearing the selection styling on the sidebar
             let placeRows = document.querySelectorAll("scroll-page");
             console.log(placeRows);
 
-            if(placeRows){
-                for (let row of placeRows){
+            if (placeRows) {
+                for (let row of placeRows) {
                     row.style.backgroundColor = "aliceblue";
                 }
             }
         }
 
-        catch(error) {
+        catch (error) {
             console.log(error);
         }
 
@@ -210,40 +211,42 @@ class App extends Component {
         event.preventDefault();
 
 
-        this.state.mapWrap.searchMap(input, this.state.coordinates).then((results)=>{
-            this.setState({places: results.sort((a,b)=>{
-                return   b.rating - a.rating;
-            })});
+        this.state.mapWrap.searchMap(input, this.state.coordinates).then((results) => {
+            this.setState({
+                places: results.sort((a, b) => {
+                    return b.rating - a.rating;
+                })
+            });
         });
 
     }
 
-    selectPlace(event){
+    selectPlace(event) {
 
-         let selectedDom = event.currentTarget.parentNode.parentNode;
+        let selectedDom = event.currentTarget.parentNode.parentNode;
 
-         let selected = this.state.places.find((place)=>{
-             return selectedDom.id === place.place_id;
-         });
+        let selected = this.state.places.find((place) => {
+            return selectedDom.id === place.place_id;
+        });
 
-        this.setState((prevStatus)=>{
-                let oldList = prevStatus.selectedList;
-                let city = prevStatus.city;
-                if(!oldList.find((place)=>{
+        this.setState((prevStatus) => {
+            let oldList = prevStatus.selectedList;
+            let city = prevStatus.city;
+            if (!oldList.find((place) => {
                     return place.name === selected.name;
-                    })){
-                    oldList.push(selected);
-                }
+                })) {
+                oldList.push(selected);
+            }
 
-                city.places = oldList;
+            city.places = oldList;
             return {city: city}
-        }, ()=>{
+        }, () => {
 
         });
         selectedDom.style.backgroundColor = "grey"
     }
 
-    showItinerary(){
+    showItinerary() {
 
         let mapDom = document.querySelector(".map-container").style.display = "none";
         let sidebarDom = document.querySelector(".sidebar").style.display = "none";
@@ -251,7 +254,7 @@ class App extends Component {
         this.postItinerary();
     }
 
-    hideItinerary(){
+    hideItinerary() {
         this.setState({places: null});
         let mapDom = document.querySelector(".map-container").style.display = "flex";
         let sidebarDom = document.querySelector(".sidebar").style.display = "block";
@@ -270,50 +273,50 @@ class App extends Component {
     }
 
 
-    deleteCityFromItinerary(cityName){
+    deleteCityFromItinerary(cityName) {
         //make this its own function like: getCity
         let targetIndex;
 
-        let target = this.state.cities.filter((city)=>{
-            if(city.name === cityName){
+        let target = this.state.cities.filter((city) => {
+            if (city.name === cityName) {
                 targetIndex = this.state.cities.indexOf(city);
                 return true;
             }
         });
 
-        this.setState((prevState)=>{
+        this.setState((prevState) => {
             prevState.cities.splice(targetIndex, 1);
             return {cities: prevState.cities};
-        }, ()=>{
+        }, () => {
             this.postItinerary();
         });
     }
 
-    deletePlaceFromItinerary(cityName, placeName){
+    deletePlaceFromItinerary(cityName, placeName) {
 
         //make this its own function like: getCity
-        let targetIndex;
-        let targetPlaceIndex;
 
         let target = this.state.cities.filter((city)=>{
             if(city.name === cityName){
-                targetIndex = this.state.cities.indexOf(city);
                 return true;
             }
-        });
+        })[0];
 
-        let targetPlace = target.filter((place)=>{
-            if(place.name === placeName){
-                return true;
-            }
-        });
+        let targetIndex = this.state.cities.map((city) => {
+            return city.name;
+        }).indexOf(cityName);
 
-        targetPlaceIndex = target.indexOf(targetPlace);
+        console.log(target);
+        let targetPlaceIndex = target.places.map((place) => {
+            return place.name;
+        }).indexOf(placeName);
 
-        this.setState((prevState)=>{
+        console.log(targetPlaceIndex);
+
+        this.setState((prevState) => {
             prevState.cities[targetIndex].places.splice(targetPlaceIndex, 1);
             return {cities: prevState.cities};
-        }, ()=>{
+        }, () => {
             this.postItinerary();
         });
     }
@@ -333,12 +336,12 @@ class App extends Component {
         return (
 
             <div className="App">
-                <HeaderComponent show={this.showItinerary.bind(this)} hide={this.hideItinerary.bind(this)} />
+                <HeaderComponent show={this.showItinerary.bind(this)} hide={this.hideItinerary.bind(this)}/>
                 <div className="main">
                     <div className="map-container">
                         <div id="map" className="map"></div>
                         <form className="search" onSubmit={this.searchTerm.bind(this)}>
-                            <input type="text"  placeholder="Search for something" />
+                            <input type="text" placeholder="Search for something"/>
                         </form>
                         <button onClick={this.anotherCity.bind(this)} className="anotherCity">Another City</button>
                         <button onClick={this.likeCity.bind(this)} className="likeCity">Like It</button>
@@ -351,7 +354,7 @@ class App extends Component {
                     <ItineraryComponent cities={this.state.cities}
                                         deleteCity={this.deleteCityFromItinerary.bind(this)}
                                         deletePlace={this.deletePlaceFromItinerary.bind(this)}
-                                        addPlace={this.addNewPlaceToCity.bind(this)} />
+                                        addPlace={this.addNewPlaceToCity.bind(this)}/>
                 </div>
             </div>
         );

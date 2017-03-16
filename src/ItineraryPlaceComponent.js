@@ -4,8 +4,7 @@
 
 import React from 'react';
 
-let ItineraryPlaceComponent = function({city, place, deletePlace}){
-
+let ItineraryPlaceComponent = function ({city, place, deletePlace}) {
 
 
     if (place === null || place.length === 0) {
@@ -15,16 +14,17 @@ let ItineraryPlaceComponent = function({city, place, deletePlace}){
 
     else {
         return (
-                <div className="itinerary-place">
+            <div className="itinerary-place">
 
-                    <h3>{place.name}</h3>
-                    <p>{place.types[0]}</p>
-                    <p>{place.types[1]}</p>
+                <h3>{place.name}</h3>
+                <p>{place.types[0]}</p>
+                <p>{place.types[1]}</p>
 
-                    <button onClick={()=>{
-                        deletePlace(city.name, place.name);
-                    }} className="delete-from-itinerary">Delete place</button>
-                </div>
+                <button onClick={() => {
+                    deletePlace(city.name, place.name);
+                }} className="delete-from-itinerary">Delete place
+                </button>
+            </div>
         )
     }
 
