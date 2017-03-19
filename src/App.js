@@ -149,7 +149,7 @@ class App extends Component {
 
     likeCity() {
 
-
+        let savedCity;
         this.state.mapWrap.centerMap();
         this.setState((prevState) => {
                 if (!this.state.cities) {
@@ -161,19 +161,19 @@ class App extends Component {
 
                     let cities = prevState.cities;
                     //Checking if there is a city with the same name
-                    let savedCity = cities.find((city) => {
+                    savedCity = cities.find((city) => {
                         return city.name === this.state.city.name;
                     });
                     console.log(savedCity);
                     if (!savedCity) {
                         cities.push(this.state.city);
+                        return {cities: cities, selectedList: []}
+
                     }
                     else {
                         this.setState({city: savedCity});
+                        return {cities: cities, selectedList: savedCity.places}
                     }
-
-
-                    return {cities: cities}
                 }
 
             },
@@ -229,9 +229,15 @@ class App extends Component {
             return selectedDom.id === place.place_id;
         });
 
+        // let targetIndex = this.state.cities.map((city) => {
+        //     return city.name;
+        // }).indexOf(cityName);
+
         this.setState((prevStatus) => {
-            let oldList = prevStatus.selectedList;
-            let city = prevStatus.city;
+
+
+            let oldList = this.state.selectedList.slice();
+            let city = this.state.city;
             if (!oldList.find((place) => {
                     return place.name === selected.name;
                 })) {
@@ -239,7 +245,11 @@ class App extends Component {
             }
 
             city.places = oldList;
-            return {city: city}
+            console.log(city, oldList);
+
+            return {city: city, selectedList: oldList}
+
+
         }, () => {
 
         });
@@ -296,8 +306,8 @@ class App extends Component {
 
         //make this its own function like: getCity
 
-        let target = this.state.cities.filter((city)=>{
-            if(city.name === cityName){
+        let target = this.state.cities.filter((city) => {
+            if (city.name === cityName) {
                 return true;
             }
         })[0];
