@@ -260,6 +260,7 @@ class App extends Component {
 
         let mapDom = document.querySelector(".map-container").style.display = "none";
         let sidebarDom = document.querySelector(".sidebar").style.display = "none";
+        let navControlDom = document.querySelector(".nav-control").style.display = "none";
         let itineraryDom = document.querySelector(".itinerary").style.display = "block";
         this.postItinerary();
     }
@@ -268,6 +269,7 @@ class App extends Component {
         this.setState({places: null});
         let mapDom = document.querySelector(".map-container").style.display = "flex";
         let sidebarDom = document.querySelector(".sidebar").style.display = "block";
+        let navControlDom = document.querySelector(".nav-control").style.display = "block";
         let itineraryDom = document.querySelector(".itinerary").style.display = "none";
     }
 
@@ -335,7 +337,10 @@ class App extends Component {
 
         console.log("probando: " + cityName);
         this.hideItinerary();
-        this.componentDidMount(cityName);
+        this.componentDidMount(cityName , this.likeCity);
+
+
+
 
 
     }
@@ -350,11 +355,7 @@ class App extends Component {
                 <div className="main">
                     <div className="map-container">
                         <div id="map" className="map"></div>
-                        <form className="search" onSubmit={this.searchTerm.bind(this)}>
-                            <input type="text" placeholder="Search for something"/>
-                        </form>
-                        <button onClick={this.anotherCity.bind(this)} className="anotherCity">Another City</button>
-                        <button onClick={this.likeCity.bind(this)} className="likeCity">Like It</button>
+
                     </div>
                     <SideBar city={this.state.city}
                              places={this.state.places}
@@ -366,7 +367,16 @@ class App extends Component {
                                         deletePlace={this.deletePlaceFromItinerary.bind(this)}
                                         addPlace={this.addNewPlaceToCity.bind(this)}/>
                 </div>
+
+                <div className="nav-control">
+                    <form className="search" onSubmit={this.searchTerm.bind(this)}>
+                        <input type="text" placeholder="Search for something"/>
+                    </form>
+                    <button onClick={this.anotherCity.bind(this)} className="anotherCity">Another City</button>
+                    <button onClick={this.likeCity.bind(this)} className="likeCity">Like It</button>
+                </div>
             </div>
+
         );
     }
 }
